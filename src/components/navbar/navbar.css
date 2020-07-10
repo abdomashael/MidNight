@@ -1,0 +1,53 @@
+.navbar{
+  direction: rtl;
+float: right;
+}
+
+.navbar-nav > a {
+  color: white !important;
+  margin-left: auto;
+
+}
+
+
+.navbar-collapse > a{
+  color: white !important;
+/* margin-left: auto; */
+}
+
+
+.navbar-nav > .active,
+.navbar-nav > a:hover,
+.navbar-collapse > a:hover {
+  color: #0c9 !important;
+}
+
+
+
+#btn {
+  background: linear-gradient(90deg, #0c9 0, #09f);
+  color: white !important;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+a:hover#btn {
+  background: #0c9 !important;
+}
+
+#kids {
+  color: white !important;
+  font-weight: bold;
+}
+
+a:hover#kids {
+  color: white !important;
+  font-weight: bold;
+}
+
+#logo{
+    width: 65px;
+}

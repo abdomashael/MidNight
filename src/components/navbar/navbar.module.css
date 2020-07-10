@@ -1,0 +1,10 @@
+.transparent {
+    background: rgb(23,29,37);
+    background: linear-gradient(0deg, rgba(23,29,37,0.05) 20%, rgba(23,29,37,1) 110%);
+}
+.dark {
+  background-color: #171d25 !important;
+}
+
+
+

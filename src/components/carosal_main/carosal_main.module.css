@@ -1,0 +1,52 @@
+/* Style the video: 100% width and height to cover the entire window */
+.myImage {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+}
+
+.gradinatBackground {
+  float: left;
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    rgba(23, 29, 37, 0) 30%,
+    rgba(23, 29, 37, 0.9) 100%
+  );
+  width: 100vw;
+  height: 95vh;
+}
+
+.gradinatBackgroundHorzintal {
+  background: rgb(23, 29, 37);
+  background: linear-gradient(
+    0deg,
+    rgba(23, 29, 37, 1) 5%,
+    rgba(255, 255, 255, 0) 50%
+  );
+
+  /* width: 100vw; */
+  height: 100vh;
+}
+
+.mainContainer {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: right;
+  margin: auto;
+}
+
+.mainContainer > div {
+  opacity: 0.75;
+  height: 70%;
+}
+.mainContainer > div:hover {
+  opacity: 1;
+  transition-duration: 1s;
+}
+
+.mainDiv {
+  width: 100vw;
+  height: 70%;
+}
+

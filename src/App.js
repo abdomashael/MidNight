@@ -1,24 +1,123 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React from "react";
+import "./App.css";
+import Navbar from "./components/navbar/navbar";
+import CarosalMain from "./components/carosal_main/carosal_main";
+import SectionItem from "./components/section_item/section_item";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <div>
+      <CarosalMain
+        vipHidden={true}
+        sessionHidden={false}
+        sessionNo="1"
+        mainInfo="فنان ، فنان "
+        description=" تخضع كانج ميراي لعملية تجميلية للحصول على الشكل الذي طالما
+                  حلمت به، ولكن عندما تقع في حب دو كيانج سيوك الكاره للعمليات
+                  التجميلية، تجد نفسها أمام تحد جديد."
+        mainImgSrc="https://shahidstatic3.akamaized.net/mediaObject/slider/Ihsan/Thumbs-5/Sakoon_Jamila_Slider_Hero_New/original/Sakoon_Jamila_Slider_Hero_New.jpg?height=432&width=768&croppingPoint=&version=1&type=webp"
+        thumbnailSrc="https://shahidstatic1.akamaized.net/mediaObject/New-Thumbs/Karim2020-22/Sakon-jamlia-logo/original/Sakon-jamlia-logo.png?height=&width=345&croppingPoint=mc&version=1&type=png"
+      />
+      </div>
+     
+
+      <div className="main">
+
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div>
+          <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+      </div>
     </div>
   );
 }

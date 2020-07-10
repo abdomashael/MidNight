@@ -1,0 +1,52 @@
+.slider {
+  display: "flex";
+  justify-content: "center";
+  flex-flow: "row";
+  align-content: "center";
+  text-align: "center";
+}
+
+.sliderItem {
+  height: 50px;
+  width: auto;
+}
+
+.container {
+  max-width: 60%;
+  height: auto;
+  margin: auto;
+}
+
+@keyframes line_animation {
+    from {
+        width: 0px;
+    }
+    to {
+        width:50px;
+    }
+}
+
+.activeline {
+  margin: auto;
+  margin-top: 8px;
+  width: 50px;
+  height: 2px;
+  background: #0c9;
+  animation-name: line_animation;
+  animation-duration: .5s;
+  animation-timing-function: linear; 
+}
+
+
+.inactiveLine {
+    margin-top: 8px;
+    height: 2px;
+}
+
+.flag:hover {
+    color: #0c9;
+}
+
+.m{
+  opacity: 0.25;
+}

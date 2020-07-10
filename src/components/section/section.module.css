@@ -1,0 +1,67 @@
+  
+  .section {
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    position: absolute;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    padding: 0 25px;
+    white-space: nowrap;
+    margin-right: 25px;
+    right: 0;
+    left: auto;
+  }
+  
+
+  .flagLeft ,.flagRight  {
+    position: absolute;
+    opacity: 0;
+    margin-top: 15px;
+    height: 110px;
+    width: 2.8%;
+    z-index: 1;
+    background-color: rgba(111, 108, 106, 0.6);
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  
+  .flagLeft{
+    left: 0;
+  }
+  .flagRight {
+    right: 0;
+    margin-right: 15px;
+  }
+  
+  .flagLeft:hover ,.flagRight:hover , .hover{
+    opacity: 1;
+  }
+
+  .sectionHover{
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    position: absolute;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    padding: 0 25px;
+    white-space: nowrap;
+    right: 0;
+    left: auto;
+    margin-right: 0px;
+    transition:  margin-right .5s;
+  }
+
+  .sectionTop{
+    direction: rtl;
+    color: white;
+    font-weight: bolder;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
