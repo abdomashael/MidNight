@@ -31,48 +31,47 @@ const Section = () => {
   };
 
   return (
-    <Fragment>
-      <div className={styles.sectionTop} >
-        <label>البث المباشر</label>
-        <div>sdsf</div>
-      </div>
-      <div className={styles.sectionConatiner}>
-        <span className={styles.flagLeft} onClick={leftOnClickHandler}>
-          <FontAwesomeIcon
-            size="2x"
-            icon={faChevronLeft}
-            color="#ffff"
-            className={styles.icon}
-          />
-        </span>
-        <span className={styles.flagRight} onClick={rightOnClickHandler}>
-          <FontAwesomeIcon
-            size="2x"
-            icon={faChevronRight}
-            color="#ffff"
-            className={styles.icon}
-          />
-        </span>
-
-        <div
-          className={isHover ? styles.sectionHover : styles.section}
-          style={{ transform: ` translate3d(${transformX}px, 0px, 0px) ` }}
-        >
-          <SectionItem hoverChange={setIsHover} />
-          <SectionItem hoverChange={setIsHover} />
-          <SectionItem hoverChange={setIsHover} />
-          <SectionItem hoverChange={setIsHover} />
-          <SectionItem hoverChange={setIsHover} />
-          <SectionItem hoverChange={setIsHover} />
-          <SectionItem hoverChange={setIsHover} />
-          <SectionItem hoverChange={setIsHover} />
-          <SectionItem hoverChange={setIsHover} />
-          <SectionItem hoverChange={setIsHover} />
-          <SectionItem hoverChange={setIsHover} />
-          <SectionItem hoverChange={setIsHover} />
+    <div className={styles.conatiner}>
+        <div className={styles.sectionTop}>
+          <label>البث المباشر</label>
+          <div>sdsf</div>
+        </div>
+        <div>
+          <span className={styles.flagLeft} onClick={leftOnClickHandler}>
+            <FontAwesomeIcon
+              size="2x"
+              icon={faChevronLeft}
+              color="#ffff"
+              className={styles.icon}
+            />
+          </span>
+          <span className={styles.flagRight} onClick={rightOnClickHandler}>
+            <FontAwesomeIcon
+              size="2x"
+              icon={faChevronRight}
+              color="#ffff"
+              className={styles.icon}
+            />
+          </span>
+            <div
+              className={isHover ? styles.sectionHover : styles.section}
+              style={{ transform: ` translate3d(${transformX}px, 0px, 0px) ` }}
+            >
+              <SectionItem hoverChange={setIsHover} />
+              <SectionItem hoverChange={setIsHover} />
+              <SectionItem hoverChange={setIsHover} />
+              <SectionItem hoverChange={setIsHover} />
+              <SectionItem hoverChange={setIsHover} />
+              <SectionItem hoverChange={setIsHover} />
+              <SectionItem hoverChange={setIsHover} />
+              <SectionItem hoverChange={setIsHover} />
+              <SectionItem hoverChange={setIsHover} />
+              <SectionItem hoverChange={setIsHover} />
+              <SectionItem hoverChange={setIsHover} />
+              <SectionItem hoverChange={setIsHover} />
+            </div>
         </div>
       </div>
-    </Fragment>
   );
 };
 
