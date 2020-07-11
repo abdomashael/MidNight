@@ -8,11 +8,14 @@ import { Row, Col } from "react-bootstrap";
 
 const CarosalMain = (props) => {
   return (
-    <div>
+    <div className={styles.carosalContainer}>
       <img alt="main" className={styles.myImage} src={props.mainImgSrc}></img>
       <div className={styles.gradinatBackground}>
         <div className={styles.gradinatBackgroundHorzintal}>
-          <Row className={styles.mainDiv}>
+        </div>
+      </div>
+      <div className={styles.mainDiv}>
+      <Row >
             <Col md="6"></Col>
             <Col md="6" className={styles.mainContainer}>
               <div>
@@ -27,10 +30,10 @@ const CarosalMain = (props) => {
               </div>
             </Col>
           </Row>
+          
           <CarouselSlider></CarouselSlider>
          
          <Section/>
-        </div>
       </div>
     </div>
   );

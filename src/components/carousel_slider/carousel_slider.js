@@ -82,7 +82,7 @@ const CarouselSlider = () => {
       >
         {test.map((element, idx) => {
           return (
-            <div>
+            <div key={idx}>
               <img
                 className={styles.sliderItem}
                 alt="thum"
