@@ -11,29 +11,28 @@ const CarosalMain = (props) => {
     <div className={styles.carosalContainer}>
       <img alt="main" className={styles.myImage} src={props.mainImgSrc}></img>
       <div className={styles.gradinatBackground}>
-        <div className={styles.gradinatBackgroundHorzintal}>
-        </div>
+        <div className={styles.gradinatBackgroundHorzintal}></div>
       </div>
       <div className={styles.mainDiv}>
-      <Row >
-            <Col md="6"></Col>
-            <Col md="6" className={styles.mainContainer}>
-              <div>
-                <SlideInfo
-                  vipHidden={props.vipHidden}
-                  sessionHidden={props.sessionHidden}
-                  sessionNo={props.sessionNo}
-                  mainInfo={props.mainInfo}
-                  description={props.description}
-                  thumbnailSrc={props.thumbnailSrc}
-                ></SlideInfo>
-              </div>
-            </Col>
-          </Row>
-          
-          <CarouselSlider></CarouselSlider>
-         
-         <Section/>
+        <Row>
+          <Col md="6"></Col>
+          <Col md="6" className={styles.mainContainer}>
+            <div>
+              <SlideInfo
+                vipHidden={props.vipHidden}
+                sessionHidden={props.sessionHidden}
+                sessionNo={props.sessionNo}
+                mainInfo={props.mainInfo}
+                description={props.description}
+                thumbnailSrc={props.thumbnailSrc}
+              ></SlideInfo>
+            </div>
+          </Col>
+        </Row>
+        <CarouselSlider></CarouselSlider>
+        <div className={styles.section}>
+          <Section />
+        </div>
       </div>
     </div>
   );
