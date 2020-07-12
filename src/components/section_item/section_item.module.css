@@ -1,24 +1,131 @@
-.mainDiv1{
-    direction: rtl;
-    margin: 2px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    display: inline-block;
-    width: 223px;
-    height: 110px;
-    background-color: tomato;
-    
+.mainDiv1 {
+  position: relative;
+  direction: rtl;
+  margin: 2px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  display: inline-block;
+  width: 300px;
+  height: 150px;
+  background-color: #181d25;
 }
 
+.mainDiv1:hover {
+  display: inline-block;
+  margin: 2px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  /* margin-bottom: 10px; */
+  width: 350px;
+  height: 190px;
+  background: red;
+  transition: width 0.5s, height 0.5s, margin-bottom 0.5s, margin-top 0.5s;
+}
+.sectionImg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  transition: width 0.5s, height 0.5s, margin-bottom 0.5s, margin-top 0.5s;
+}
 
-.mainDiv1:hover{
-    display: inline-block;
-    margin: 2px;
-    margin-bottom: 0px; 
-    margin-top: 0px; 
-    /* margin-bottom: 10px; */
-    width: 250px;
-    height: 140px;
-    background: red;
-    transition:  width .5s,height .5s,margin-bottom .5s,margin-top .5s;
+.bakground {
+  position: absolute;
+  background: rgb(23, 29, 37);
+  background: linear-gradient(
+    0deg,
+    rgba(23, 29, 37, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  opacity: 0;
+}
+
+.bakground:hover {
+  opacity: 1;
+  transition: opacity 0.4s ease-in;
+}
+
+.top {
+  position: relative;
+  margin: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon {
+  display: inline-block;
+  position: relative;
+  width: auto;
+  height: 25px;
+}
+
+.live {
+  height: 25px;
+  position: absolute;
+  z-index: 3;
+  padding: 6px 6px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  background-color: #e41932;
+  color: #fff;
+  font-weight: bolder;
+  line-height: 0;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.90278vw;
+}
+.body {
+  margin-right: 12px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  direction: rtl;
+
+}
+
+.session {
+  color: white;
+  font-weight: 600;
+  font-size: 22px;
+  color: white;
+  font-family: "BoutrosMBCDinkum";}
+
+.mainInfo {
+  color: #cecece;
+  font-weight: 500;
+  font-size: 18px;
+  font-family: "BoutrosMBCDinkum"
+}
+
+.container {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: auto;
+}
+
+.footer {
+  display: block;
+  align-items: center;
+  margin-right: 10px;
+  width: 340px;
+  margin-top: 10px;
+  direction: rtl;
+}
+.title {
+  font-weight: 600;
+  font-size: 24px;
+  color: white;
+  font-family: "BoutrosMBCDinkum";
 }
