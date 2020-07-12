@@ -1,6 +1,7 @@
  .conatiner {
    position: relative;
-   height: 200px;
+   height: 250px;
+   display:block;
 
  } 
   .section {
@@ -11,17 +12,20 @@
     overflow-y: hidden;
     overflow-x: hidden;
     white-space: nowrap;
-    margin-right: 15px;
+    margin-right: 30px;
+    margin-left: 30px;
+    padding-right: 25px;
     right: 0;
     left: auto;
+    transition:  transform 1.5s ease;
+
   }
   
 
   .flagLeft ,.flagRight  {
     position: absolute;
-    opacity: 0;
-    margin-top: 15px;
-    height: 110px;
+    margin-top: 25px;
+    height: 150px;
     width: 2.8%;
     z-index: 1;
     background-color: rgba(111, 108, 106, 0.6);
@@ -36,12 +40,11 @@
   }
   .flagRight {
     right: 0;
-    margin-right: 15px;
   }
-  
+/*   
   .flagLeft:hover ,.flagRight:hover , .hover{
     opacity: 1;
-  }
+  } */
 
   .sectionHover{
     justify-content: center;
@@ -54,7 +57,11 @@
     right: 0;
     left: auto;
     margin-right: 0px;
-    transition:  margin-right .5s;
+    margin-left: 30px;
+
+    padding-right: 25px;
+
+    transition:  margin-right .5s ,transform 1.5s ease;
   }
 
   .sectionTop{
@@ -65,5 +72,27 @@
     align-items: center;
     justify-content: space-between;
     margin-left: 40px;
-    margin-right: 20px;
+    margin-right: 70px;
+  }
+
+
+  .indicator{
+    display: inline-block;
+    width: 20px;
+    border-radius: 20px;
+    /* height: 4px; */
+    margin-right: 5px;
+  }
+
+  .indicatorActive{
+    border: 2px solid #0c9;
+
+    background: #0c9 !important;
+  }
+
+
+  .indicatorInactive{
+    border: 2px solid gray;
+
+    background: gray!important;
   }
