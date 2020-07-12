@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import { Row, Col } from "react-bootstrap";
 import styles from "./slide_info.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faPlay } from "@fortawesome/free-solid-svg-icons";
-
+import ActionComponent from "../action_buttons/action";
 const SlideInfo = (props) => {
   return (
     <div>
@@ -33,8 +30,8 @@ const SlideInfo = (props) => {
               <span className={styles.mainInfo}>{props.mainInfo}</span>
             </span>
           </div>
-          <div className="mt-4">
-            <ActionComponent />
+          <div className={styles.actionDiv}>
+            <ActionComponent wide={true}/>
           </div>
           <div className={styles.subContainer}>
             <p className={styles.arabicPara}>{props.description}</p>
@@ -45,39 +42,6 @@ const SlideInfo = (props) => {
   );
 };
 
-const ActionComponent = () => {
-  const watchNowHandler = () => {
-    console.log("wwwwwwwwwww");
-  };
-
-  const addToFavHandler = () => {
-    console.log("addtofav");
-  };
-
-  return (
-    <div className={styles.subContainer + " mt-2"}>
-      <span className={styles.fullBtn + " ml-3"} onClick={watchNowHandler}>
-        <span className={styles.btnInner}>
-          <label> شاهد الاَن </label>
-          <FontAwesomeIcon
-            icon={faPlay}
-            className={"ml-2 pt-1 " + styles.icon}
-          />
-        </span>
-      </span>
-
-      <span className={styles.fullBtn} onClick={addToFavHandler}>
-        <span className={styles.btnInnerBlack}>
-          <label> اضف لقائمتي </label>
-          <FontAwesomeIcon
-            icon={faPlus}
-            className={"ml-2 pt-1 " + styles.icon}
-          />
-        </span>
-      </span>
-    </div>
-  );
-};
 
 SlideInfo.defaultProps = {
   sessionNo: "",

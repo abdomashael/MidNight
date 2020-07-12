@@ -7,65 +7,46 @@
 
 .session {
   color: white;
-  font-weight: bolder;
+  font-weight: 600;
+  line-height: normal;
+  font-size: 22px;
+  font-style: normal;
+  font-family: 'BoutrosMBCDinkum';
 }
 
 .mainInfo {
   color: #a3afc2;
-  font-weight: bolder;
+  /* font-weight: bolder; */
+  font-weight: 500;
+  font-size: 18px;
+  direction: rtl;
+  font-family: 'BoutrosMBCDinkum';
 }
 
-.fullBtn {
-  background: linear-gradient(90deg, #0c9 0, #09f);
-  color: white !important;
-  border-radius: 30px;
-  font-weight: bold;
-  font-size: 12px;
-  font-family: sans-serif;
-  text-align: center;
-  justify-content: center;
-}
 
-.btnInnerBlack {
-  display: block;
-  background-color: #171d25;
-  border-radius: 30px;
-  margin: 2px;
-  padding-left: 24px;
-  padding-right: 24px;
-  padding-bottom: 3px;
-  padding-top: 4px;
-}
-
-.fullBtn:hover,
-.btnInnerBlack:hover {
-  background: #0c9 !important;
-}
-
-.icon {
-  font-size: 20px;
-}
-
-.btnInner {
-  display: block;
-  border-radius: 30px;
-  margin: 4px;
-  padding-left: 32px;
-  padding-right: 32px;
-  padding-bottom: 1px;
-  padding-top: 2px;
-}
 
 .arabicPara {
   margin-top: 12px;
-  max-width: 60%;
+  max-width: 48%;
   text-align: right;
-  font-weight: bolder;
+  font-weight: bold;
+  font-size: 18px;
   direction: rtl;
   color: white;
+  font-family: 'BoutrosMBCDinkum';
+
 }
 
 .thumbnail{
-    max-height: 150px;
+    max-height: 300px;
     width: auto;
+}
+
+.actionDiv{
+  display: flex;
+  width: 25wv;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 12px;
+  direction: rtl;
 }
