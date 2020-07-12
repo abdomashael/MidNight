@@ -8,6 +8,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
+      <div className="blockDiv">
         <CarosalMain
           vipHidden={true}
           sessionHidden={false}
@@ -19,13 +20,13 @@ function App() {
           mainImgSrc="https://shahidstatic3.akamaized.net/mediaObject/slider/Ihsan/Thumbs-5/Sakoon_Jamila_Slider_Hero_New/original/Sakoon_Jamila_Slider_Hero_New.jpg?height=432&width=768&croppingPoint=&version=1&type=webp"
           thumbnailSrc="https://shahidstatic1.akamaized.net/mediaObject/New-Thumbs/Karim2020-22/Sakon-jamlia-logo/original/Sakon-jamlia-logo.png?height=&width=345&croppingPoint=mc&version=1&type=png"
         />
-
-        <div style={{marginRight:"10px" , marginTop:"20px"}}>
-        <Section/>
-        <Section/>
-        <Section/>
-        <Section/>
-        </div>
+      </div>
+      <div className="blockDiv">
+        <Section />
+        <Section />
+        <Section />
+        <Section />
+      </div>
     </div>
   );
 }
