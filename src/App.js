@@ -4,6 +4,7 @@ import Navbar from "./components/navbar/navbar";
 import CarosalMain from "./components/carosal_main/carosal_main";
 import SectionItem from "./components/section_item/section_item";
 import Section from "./components/section/section";
+import Footer from "./components/footer/footer";
 function App() {
   return (
     <div className="App">
@@ -13,7 +14,7 @@ function App() {
           vipHidden={true}
           sessionHidden={false}
           sessionNo="1"
-          mainInfo="فنان ، فنان "
+          mainInfo="فنان  ، فنان "
           description=" تخضع كانج ميراي لعملية تجميلية للحصول على الشكل الذي طالما
                   حلمت به، ولكن عندما تقع في حب دو كيانج سيوك الكاره للعمليات
                   التجميلية، تجد نفسها أمام تحد جديد."
@@ -27,6 +28,8 @@ function App() {
         <Section />
         <Section />
       </div>
+
+      <Footer/>
     </div>
   );
 }
