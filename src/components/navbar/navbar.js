@@ -41,7 +41,7 @@ const CustomNavbar = () => {
       </Navbar.Brand>
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className={"ml-auto mr-3 "}>
-          <Nav.Link active href="#home">
+          <Nav.Link href="#home">
             الرئيسية
           </Nav.Link>
           <Nav.Link href="#link">مسلسلات وبرامج</Nav.Link>
@@ -62,7 +62,8 @@ const CustomNavbar = () => {
         </Nav.Link>
 
         <Nav.Link id="btn" className={cssClasses.button + " pl-4 pr-4 ml-4"}>
-          <span className="pl-2 pr-2">VIP جرب شاهد</span>
+          <span className="pr-2">جرب شاهد</span>
+          <span className="pl-2">VIP</span>
         </Nav.Link>
       </Navbar.Collapse>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
