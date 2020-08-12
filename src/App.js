@@ -22,14 +22,15 @@ function App() {
           thumbnailSrc="https://shahidstatic1.akamaized.net/mediaObject/New-Thumbs/Karim2020-22/Sakon-jamlia-logo/original/Sakon-jamlia-logo.png?height=&width=345&croppingPoint=mc&version=1&type=png"
         />
       </div>
-      <div className="blockDiv">
+      <div className="section">
         <Section />
         <Section />
         <Section />
         <Section />
+        <Footer/>
+
       </div>
 
-      <Footer/>
     </div>
   );
 }
