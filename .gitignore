@@ -4,6 +4,9 @@
 /node_modules
 /.pnp
 .pnp.js
+/src/seed/scraper/node_modules
+/src/seed/scraper/package-lock.json
+package-lock.json
 
 # testing
 /coverage
