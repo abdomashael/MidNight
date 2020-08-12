@@ -56,23 +56,29 @@ const Section = () => {
   const [currentIndicator, setCurrentIndicator] = useState(0);
   const [reachMaxIndicator, setReachMaxIndicator] = useState(false);
 
+  const [vw,setVW] = useState(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0))
+
+
   useEffect(() => {
+
+
     window.addEventListener("resize", () => {
-      let width = 300;
+      let width = vw*16/100;
 
       while (width < window.innerWidth) {
-        width += 300;
+        width += vw*16/100;;
       }
-      console.log(width);
+
       setWindowWidth(width);
     });
   }, []);
 
   useEffect(() => {
-    let width = 300;
+
+    let width = vw*16/100;
 
     while (width < window.innerWidth) {
-      width += 300;
+      width += vw*16/100;;
     }
     setWindowWidth(width);
   });
@@ -95,7 +101,7 @@ const Section = () => {
         <label>البث المباشر</label>
         <SectionIndicators
           windowWidth={windowWidth}
-          itemWidth={300}
+          itemWidth={vw*16/100}
           numOfItems={30}
           currentIndicatorChange={currentIndicator}
           isHover={isHover}

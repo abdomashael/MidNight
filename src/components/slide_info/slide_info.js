@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+
+import { connect } from "react-redux";
+
 import styles from "./slide_info.module.css";
 import ActionComponent from "../action_buttons/action";
 const SlideInfo = (props) => {
@@ -10,7 +13,7 @@ const SlideInfo = (props) => {
             <img
               className={styles.thumbnail}
               alt="thum"
-              src={props.thumbnailSrc}
+              src={props.thumbnails[props.idx]}
             />
           </div>
           <div className="mt-3">
@@ -49,4 +52,11 @@ SlideInfo.defaultProps = {
   description: "",
 };
 
-export default SlideInfo;
+
+
+const mapStateToProps = (state) => {
+  return { thumbnails: state.carosal.allThumbnails,
+  idx: state.carosal.currentThumbnailIdx};
+};
+
+export default connect(mapStateToProps)(SlideInfo);

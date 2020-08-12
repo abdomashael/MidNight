@@ -30,10 +30,12 @@ const CarosalMain = (props) => {
           </Col>
         </Row>
         <CarouselSlider></CarouselSlider>
-        <div className={styles.section}>
-          <Section />
-        </div>
+        
+        
       </div>
+      {/* <div className={styles.section}>
+          <Section />
+        </div> */}
     </div>
   );
 };

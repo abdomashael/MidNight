@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 
+import { CURRENT_THUMBNAIL } from "../../redux/actions";
+import { connect } from "react-redux";
+
+
 import Carousel from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
-import { Container } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 import {
   faChevronLeft,
@@ -12,34 +16,39 @@ import {
 
 import styles from "./carousel_slider.module.css";
 
-const CarouselSlider = () => {
-  const [test, setTEst] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+const CarouselSlider = (props) => {
   const [current, setCurrent] = useState(0);
   const [arrowLeftHidden, setArrowLeftHidden] = useState(false);
-  
-  const [ numOfSlides,setNoOfSlides] = useState(6)
+
+  const [numOfSlides, setNoOfSlides] = useState(6);
+
+  useEffect(() => {
+    numberOfSlidesChange(window.innerWidth);
+    window.addEventListener("resize", () => {
+      console.log(window.innerWidth);
+      numberOfSlidesChange(window.innerWidth);
+    });
+
+  }, []);
+
 
   useEffect(()=>{
-    numberOfSlidesChange(window.innerWidth)
-    window.addEventListener('resize', ()=>{
-      console.log(window.innerWidth);
-      numberOfSlidesChange(window.innerWidth)
-    }); 
-  },[])
+    props.setCurrentIdx(current)
+  },[current])
 
-  const numberOfSlidesChange=(windowSize)=>{
-    if (windowSize <500) {
-      setNoOfSlides(2)
-    }else if (windowSize<750) {
-      setNoOfSlides(3)
-    }else if (windowSize<1000) {
-      setNoOfSlides(4)
-    }else if (windowSize<1250) {
-      setNoOfSlides(5)
+  const numberOfSlidesChange = (windowSize) => {
+    if (windowSize < 500) {
+      setNoOfSlides(2);
+    } else if (windowSize < 750) {
+      setNoOfSlides(3);
+    } else if (windowSize < 1000) {
+      setNoOfSlides(4);
+    } else if (windowSize < 1250) {
+      setNoOfSlides(5);
     } else {
-      setNoOfSlides(6)
+      setNoOfSlides(6);
     }
-  }
+  };
 
   const onChangeHandler = (slide) => {
     console.log(Math.abs(slide % 10));
@@ -80,13 +89,13 @@ const CarouselSlider = () => {
         addArrowClickHandler
         onChange={onChangeHandler}
       >
-        {test.map((element, idx) => {
+        {props.thumbnails.map((elementSrc, idx) => {
           return (
             <div key={idx}>
               <img
                 className={styles.sliderItem}
                 alt="thum"
-                src="https://shahidstatic1.akamaized.net/mediaObject/New-Thumbs/Karim2020-22/Sakon-jamlia-logo/original/Sakon-jamlia-logo.png?height=&width=345&croppingPoint=mc&version=1&type=png"
+                src={elementSrc}
               />
               <div
                 className={
@@ -101,4 +110,13 @@ const CarouselSlider = () => {
   );
 };
 
-export default CarouselSlider;
+const mapStateToProps = (state) => {
+  return { thumbnails: state.carosal.allThumbnails };
+};
+
+const mapDispatchToProps = dispatch=>{
+  return{ 
+    setCurrentIdx: (idx)=>dispatch({type:CURRENT_THUMBNAIL,payload:{thumbnailIdx:idx}})}
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(CarouselSlider);

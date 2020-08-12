@@ -7,8 +7,9 @@
 }
 
 .sliderItem {
-  height: 80px;
-  width: auto;
+  height: 7vh;
+  max-width:  7vw;
+  margin: auto;
 }
 
 .container {
@@ -43,6 +44,9 @@
     height: 2px;
 }
 
+.flag{
+  margin: 12px;
+}
 .flag:hover {
     color: #0c9;
 }
