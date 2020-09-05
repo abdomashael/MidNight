@@ -18,7 +18,6 @@ import styles from "./carousel_slider.module.css";
 
 const CarouselSlider = (props) => {
   const [current, setCurrent] = useState(0);
-  const [arrowLeftHidden, setArrowLeftHidden] = useState(false);
 
   const [numOfSlides, setNoOfSlides] = useState(6);
 
@@ -51,9 +50,9 @@ const CarouselSlider = (props) => {
   };
 
   const onChangeHandler = (slide) => {
-    console.log(Math.abs(slide % 10));
+    // console.log(Math.abs(slide % 10));
 
-    setCurrent(slide % 10);
+    setCurrent(slide);
   };
 
   return (
@@ -61,30 +60,29 @@ const CarouselSlider = (props) => {
       <Carousel
         className={styles.slider}
         slidesPerPage={numOfSlides}
-        rtl
         clickToChange
         arrowLeft={
           <FontAwesomeIcon
             className={styles.flag}
             size="lg"
-            icon={faChevronRight}
+            icon={faChevronLeft}
             inverse
             color="#ffff"
           />
         }
         arrowLeftDisabled={
-          <FontAwesomeIcon size="lg" icon={faChevronRight} hidden={true} />
+          <FontAwesomeIcon size="lg" icon={faChevronLeft} hidden={true} />
         }
         arrowRight={
           <FontAwesomeIcon
             className={styles.flag}
             size="lg"
-            icon={faChevronLeft}
+            icon={faChevronRight}
             color="#ffff"
           />
         }
         arrowRightDisabled={
-          <FontAwesomeIcon size="lg" hidden={true} icon={faChevronLeft} />
+          <FontAwesomeIcon size="lg" hidden={true} icon={faChevronRight} />
         }
         addArrowClickHandler
         onChange={onChangeHandler}
