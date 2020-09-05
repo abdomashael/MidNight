@@ -7,6 +7,7 @@ import {
 import styles from "./section.module.css";
 
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 
 const SectionIndicators = ({
   windowWidth,
@@ -26,7 +27,7 @@ const SectionIndicators = ({
   useEffect(() => {
     setIndicators([]);
     indicatorsCalc();
-    setReachMaxIndicator(indicators.length-1 === currentIndicator)
+    setReachMaxIndicator(indicators.length - 1 === currentIndicator);
   }, [currentIndicator, windowWidth]);
 
   const indicatorsCalc = () => {
@@ -42,67 +43,73 @@ const SectionIndicators = ({
         ...old,
         <div className={indicatorStyle} key={index}></div>,
       ]);
-
     }
   };
   return <div hidden={!isHover}>{indicators}</div>;
 };
 
-const Section = () => {
+const Section = (props) => {
+  const [section, setSection] = useState({});
   const [transformX, setTrasformX] = useState(0);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(
+    window.innerWidth - (window.innerWidth * 15) / 100
+  );
   const [isHover, setIsHover] = useState(false);
 
   const [currentIndicator, setCurrentIndicator] = useState(0);
   const [reachMaxIndicator, setReachMaxIndicator] = useState(false);
 
-  const [vw,setVW] = useState(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0))
+  const [vw, setVW] = useState(
+    Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+  );
 
+  // useEffect(() => {
+  //   // console.log(props.sections);
+
+  //   window.addEventListener("resize", () => {
+  //     let width = (vw * 15) / 100;
+
+  //     while (width < window.innerWidth) {
+  //       width += (vw * 15) / 100;
+  //     }
+  //     // width += (vw * 16) / 100/2;
+
+  //     setWindowWidth(width);
+  //   });
+  // }, []);
 
   useEffect(() => {
-
-
-    window.addEventListener("resize", () => {
-      let width = vw*16/100;
-
-      while (width < window.innerWidth) {
-        width += vw*16/100;;
-      }
-
-      setWindowWidth(width);
-    });
+    setWindowWidth(window.innerWidth - (window.innerWidth * 15) / 100);
   }, []);
 
   useEffect(() => {
-
-    let width = vw*16/100;
-
-    while (width < window.innerWidth) {
-      width += vw*16/100;;
+    if (props.sections.length > 0) {
+      setSection(props.sections[props.sectionIdx]);
     }
-    setWindowWidth(width);
-  });
+  }, [props.sections]);
 
   const leftOnClickHandler = () => {
     const oldX = transformX;
     setTrasformX(oldX + windowWidth);
-    setCurrentIndicator(currentIndicator + 1);
+    setCurrentIndicator(currentIndicator - 1);
   };
 
   const rightOnClickHandler = () => {
     const oldX = transformX;
     setTrasformX(oldX - windowWidth);
-    setCurrentIndicator(currentIndicator - 1);
+    setCurrentIndicator(currentIndicator + 1);
   };
 
   return (
     <div className={styles.conatiner}>
       <div className={styles.sectionTop}>
-        <label>البث المباشر</label>
+        <label className={styles.sectionName}>
+          {section.section_name ? section.section_name : ""}
+        </label>
         <SectionIndicators
           windowWidth={windowWidth}
-          itemWidth={vw*16/100}
-          numOfItems={30}
+          itemWidth={(vw * 16) / 100}
+          numOfItems={section.results ? section.results.length : 0}
           currentIndicatorChange={currentIndicator}
           isHover={isHover}
           setReachMaxIndicator={setReachMaxIndicator}
@@ -112,7 +119,7 @@ const Section = () => {
         <span
           onMouseEnter={() => setIsHover(true)}
           onMouseLeave={() => setIsHover(false)}
-          hidden={!isHover || reachMaxIndicator}
+          hidden={!isHover || currentIndicator === 0}
           className={styles.flagLeft}
           onClick={leftOnClickHandler}
         >
@@ -126,7 +133,7 @@ const Section = () => {
         <span
           onMouseEnter={() => setIsHover(true)}
           onMouseLeave={() => setIsHover(false)}
-          hidden={!isHover || currentIndicator === 0}
+          hidden={!isHover || reachMaxIndicator}
           className={styles.flagRight}
           onClick={rightOnClickHandler}
         >
@@ -142,6 +149,15 @@ const Section = () => {
           className={isHover ? styles.sectionHover : styles.section}
           style={{ transform: ` translate3d(${transformX}px, 0px, 0px) ` }}
         >
+          {section.results
+            ? section.results.map((item) => (
+                <SectionItem
+                  hoverChange={setIsHover}
+                  data={item}
+                ></SectionItem>
+              ))
+            : ""}
+          {/* <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
           <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
           <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
           <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
@@ -172,12 +188,17 @@ const Section = () => {
           <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
           <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
           <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-                  </div>
+          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/> */}
+        </div>
       </div>
     </div>
   );
 };
 
-export default Section;
+const mapStateToProps = (state) => {
+  return {
+    sections: state.home.sections,
+  };
+};
+
+export default connect(mapStateToProps)(Section);
