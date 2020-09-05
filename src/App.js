@@ -1,15 +1,60 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import Navbar from "./components/navbar/navbar";
-import CarosalMain from "./components/carosal_main/carosal_main";
-import SectionItem from "./components/section_item/section_item";
-import Section from "./components/section/section";
-import Footer from "./components/footer/footer";
-function App() {
+import Home from "./pages/home"
+import { connect } from "react-redux";
+import { ADD_THUMBNAILS, ADD_TRENDS, ADD_GENRES } from "./redux/actions";
+
+import axios from "axios";
+
+
+function App(props) {
+
+  useEffect(() => {
+    
+    let fetchData = async()=>{
+      console.log("data");
+      let response = await axios.get(
+        process.env.REACT_APP_API_URL + "/trending/all/week"
+      );
+      let trends = response.data.results;
+      props.setTrends(trends)
+  
+      let thumbnails = trends.reduce(
+        (total, current) => [
+          ...total,
+          process.env.REACT_APP_IMAGE_BASE_URL + current.poster_path,
+        ],
+        []
+      );
+      props.setThumbnails(thumbnails);
+      console.log(thumbnails); 
+    }
+    let fetchGenres = async()=>{
+      console.log("genre");
+
+      let response = await axios.get(
+        process.env.REACT_APP_API_URL + "/genre/movie/list"
+      );
+      // console.log(response.data.genres);
+      // let trends = response.data.results;
+      props.setGenres(response.data.genres)
+
+      fetchData()
+    }
+  
+    console.log("ssssss");
+    fetchGenres();
+    }, []);
+
+  
+
   return (
     <div className="App">
       <Navbar />
-      <div className="blockDiv">
+      <Home/>
+
+      {/* <div className="blockDiv">
         <CarosalMain
           vipHidden={true}
           sessionHidden={false}
@@ -29,10 +74,23 @@ function App() {
         <Section />
         <Footer/>
 
-      </div>
+      </div> */}
 
     </div>
   );
 }
 
-export default App;
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setThumbnails: (thumbnails) =>
+      dispatch({ type: ADD_THUMBNAILS, payload: { thumbnails: thumbnails } }),
+      setTrends: (trends) =>
+      dispatch({ type: ADD_TRENDS, payload: { trends: trends } }),
+      setGenres: (genres) =>
+      dispatch({ type: ADD_GENRES, payload: { genres: genres } }),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(App);
+// export default App;
