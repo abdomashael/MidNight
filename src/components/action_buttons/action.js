@@ -14,13 +14,13 @@ const ActionComponent = (props) => {
 
   return (
     <div className={styles.subContainer + " mt-2"}>
-      <span className={styles.fullBtn + " ml-3"} onClick={watchNowHandler}>
+      <span className={styles.fullBtn } onClick={watchNowHandler}>
         <span className={`${styles.btnInner} ${props.wide?styles.wide:null} `}>
           <FontAwesomeIcon
             icon={faPlay}
-            className={"ml-2 pt-1 " + styles.icon}
+            className={"ml-2 " + styles.icon}
           />
-          <label> شاهد الاَن </label>
+          <label>More</label>
         </span>
       </span>
 
@@ -28,9 +28,9 @@ const ActionComponent = (props) => {
         <span className={`${styles.btnInnerBlack} ${props.wide?styles.wide:null} `}>
           <FontAwesomeIcon
             icon={faPlus}
-            className={"ml-2 pt-1 " + styles.icon}
+            className={"ml-2 " + styles.icon}
           />
-          <label> اضف لقائمتي </label>
+          <label className={styles.label}>Add to list</label>
         </span>
       </span>
     </div>

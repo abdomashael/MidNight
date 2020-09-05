@@ -1,4 +1,5 @@
 .fullBtn {
+  display: block;
     background: linear-gradient(90deg, #0c9 0, #09f);
     color: white !important;
     border-radius: 25px;
@@ -17,7 +18,7 @@
     margin: 2px;
     padding-left: 16px;
     padding-right: 16px;
-    padding-bottom: 3px;
+    padding-bottom: 5px;
     padding-top: 4px;
     direction: rtl;
 
@@ -39,7 +40,7 @@
     padding-left: 16px;
     padding-right: 16px;
     padding-bottom: 0px;
-    padding-top: 5px;
+    padding-top: 6px;
     direction: rtl;
   }
 
@@ -52,6 +53,10 @@
   .subContainer {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+  }
+
+  .label {
+    margin-bottom: 0px;
   }
   
