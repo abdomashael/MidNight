@@ -13,7 +13,10 @@
     /* position: absolute; */
     margin-top: 80px;
     margin-bottom: 40px;
-    direction: rtl;
+    /* direction: rtl; */
+    display: block;
+    top: auto;
+    bottom: 0;
 }
 
 .item{
