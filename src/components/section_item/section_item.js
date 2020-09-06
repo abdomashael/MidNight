@@ -9,13 +9,19 @@ const SectionItem = (props) => {
 
   useEffect(() => {
     if (props.data) {
-      let newGenres = props.genres.filter((genre) =>
-        props.data.genre_ids.includes(genre.id)
-      );
-      console.log("newGenres", newGenres);
+      let newGenres = props.genres.filter((genre) => {
+        try {
+          // console.log(props.data);
+          return props.data.genre_ids.includes(genre.id);
+        } catch (error) {
+          return false;
+          console.log(error);
+        }
+      });
+      // console.log("newGenres", newGenres);
       setGenres(newGenres.map((genre) => genre.name).join(", "));
     }
-  });
+  },[]);
 
   const onMouseLeaveHandler = () => {
     props.hoverChange(false);

@@ -87,13 +87,13 @@
   padding-left: 8px;
 }
 
-.adult{
+.adult {
   background-color: #e41932;
 }
- .rate{
+.rate {
   color: #000;
   background-color: rgb(245, 197, 24);
- }
+}
 
 .body {
   margin-left: 12px;
@@ -102,7 +102,6 @@
   flex-direction: column;
   align-items: flex-start;
   /* direction: rtl; */
-
 }
 
 .session {
@@ -111,7 +110,7 @@
   font-size: 1rem;
   color: aquamarine;
   font-family: "BoutrosMBCDinkum";
-  width:15vw;
+  width: 15vw;
   text-overflow: ellipsis;
   overflow: hidden;
 }
@@ -120,7 +119,7 @@
   color: #cecece;
   font-weight: 500;
   font-size: 18px;
-  font-family: "BoutrosMBCDinkum"
+  font-family: "BoutrosMBCDinkum";
 }
 
 .container {

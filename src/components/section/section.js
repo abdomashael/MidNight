@@ -152,6 +152,7 @@ const Section = (props) => {
           {section.results
             ? section.results.map((item) => (
                 <SectionItem
+                key={item.id}
                   hoverChange={setIsHover}
                   data={item}
                 ></SectionItem>
