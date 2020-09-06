@@ -1,7 +1,8 @@
-import { ADD_GENRES } from "../actions";
+import { ADD_GENRES, TOGGLE_LOADER } from "../actions";
 
 const initialState = {
   genres: {},
+  isLoadingData:false,
 };
 
 export default function (state = initialState, action) {
@@ -10,6 +11,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         genres: action.payload.genres,
+      };
+      
+    case TOGGLE_LOADER:
+      return {
+        ...state,
+        isLoadingData: action.payload.loader,
       };
     default:
       return {
