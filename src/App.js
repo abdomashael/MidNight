@@ -1,38 +1,71 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import Navbar from "./components/navbar/navbar";
-import CarosalMain from "./components/carosal_main/carosal_main";
-import SectionItem from "./components/section_item/section_item";
-import Section from "./components/section/section";
+import Home from "./pages/home";
+import About from "./pages/about";
+import Movies from "./pages/movies/movies";
+import Series from "./pages/series";
+
+import Soon from "./components/comming_soon/soon";
+
+import { connect } from "react-redux";
+import { ADD_THUMBNAILS, ADD_TRENDS, ADD_GENRES } from "./redux/actions";
+
+import axios from "axios";
+
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Footer from "./components/footer/footer";
-function App() {
+
+function App(props) {
+  useEffect(() => {
+    let fetchGenres = async () => {
+      console.log("genre");
+
+      let response = await axios.get(
+        process.env.REACT_APP_API_URL + "/genre/movie/list"
+      );
+      // console.log(response.data.genres);
+      // let trends = response.data.results;
+      props.setGenres(response.data.genres);
+
+    };
+
+    fetchGenres();
+  }, []);
+
   return (
     <div className="App">
-      <Navbar />
-      <div className="blockDiv">
-        <CarosalMain
-          vipHidden={true}
-          sessionHidden={false}
-          sessionNo="1"
-          mainInfo="فنان  ، فنان "
-          description=" تخضع كانج ميراي لعملية تجميلية للحصول على الشكل الذي طالما
-                  حلمت به، ولكن عندما تقع في حب دو كيانج سيوك الكاره للعمليات
-                  التجميلية، تجد نفسها أمام تحد جديد."
-          mainImgSrc="https://shahidstatic3.akamaized.net/mediaObject/slider/Ihsan/Thumbs-5/Sakoon_Jamila_Slider_Hero_New/original/Sakoon_Jamila_Slider_Hero_New.jpg?height=432&width=768&croppingPoint=&version=1&type=webp"
-          thumbnailSrc="https://shahidstatic1.akamaized.net/mediaObject/New-Thumbs/Karim2020-22/Sakon-jamlia-logo/original/Sakon-jamlia-logo.png?height=&width=345&croppingPoint=mc&version=1&type=png"
-        />
-      </div>
-      <div className="section">
-        <Section />
-        <Section />
-        <Section />
-        <Section />
-        <Footer/>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/movies">
+            {/* <Soon/> */}
+            <Movies />
+          </Route>
+          <Route path="/series">
+            <Soon />
 
-      </div>
-
+            {/* <Series /> */}
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+        <Footer />
+      </Router>
     </div>
   );
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setGenres: (genres) =>
+      dispatch({ type: ADD_GENRES, payload: { genres: genres } }),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(App);
+// export default App;

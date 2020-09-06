@@ -1,37 +1,28 @@
 import React from "react";
 import styles from "./footer.module.css";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <div className={styles.footer}>
       <div className={styles.itemsConatiner}>
         <span className={styles.item}>
-          <a href=""> الرئيسية</a>
+          <Link to="/">Home</Link>
         </span>
         <span className={styles.break}></span>
         <span className={styles.item}>
-          <a href="">اتصل بنا</a>
+          <Link to="/">About us</Link>
         </span>
         <span className={styles.break}></span>
         <span className={styles.item}>
-          <a href="">تطبيقات</a>
+          <Link to="/">Terms & Condtuions</Link>
         </span>
         <span className={styles.break}></span>
         <span className={styles.item}>
-          <a href="">اَخر اﻷخبار</a>
-        </span>
-        <span className={styles.break}></span>
-        <span className={styles.item}>
-          <a href="">الشروط وألاحكام</a>
-        </span>
-        <span className={styles.break}></span>
-        <span className={styles.item}>
-          <a href="">سياسة الخصوصية</a>
+          <Link to="/">Privacy</Link>
         </span>
       </div>
-      <div className={styles.credit}>
-        جميع الحقوق محفوظة لمجموعة © MBC Group 2020
-      </div>
+      <div className={styles.credit}>© All rights reserved to Night Watcher</div>
     </div>
   );
 };

@@ -1,52 +1,63 @@
 
 
-.subContainer {
+/* .subContainer {
   display: flex;
-  flex-direction: row-reverse;
-}
+  flex-direction: row;
+} */
 
-.session {
+.title {
   color: white;
   font-weight: 600;
   line-height: normal;
-  font-size: 1.2vw;
+  font-size: 4vw;
+  height: 4vw;
+  font-style: normal;
+  font-family: 'BoutrosMBCDinkum';
+}
+
+
+.genre {
+  color: aquamarine;
+  font-weight: 600;
+  line-height: normal;
+  font-size: 1vw;
+  height: 1vw;
   font-style: normal;
   font-family: 'BoutrosMBCDinkum';
 }
 
 .mainInfo {
+  display: block;
   color: #a3afc2;
   /* font-weight: bolder; */
-  font-weight: 500;
-  font-size: 1.1vw;
-  direction: rtl;
+  font-weight: bolder;
+  font-size: 1.5vw;
+  /* direction: rtl; */
   font-family: 'BoutrosMBCDinkum';
 }
 
 
 
-.arabicPara {
-  margin-top: 12px;
-  max-width: 48%;
-  text-align: right;
-  font-weight: bold;
-  font-size: 1.1vw;
-  direction: rtl;
+.para {
+  max-width: 50%;
+  text-align: left;
+  font-weight: 400;
+  font-size: 1.2vw;
   color: white;
+  margin:auto;
+  margin-left: 0px;
   font-family: 'BoutrosMBCDinkum';
-
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
 }
 
 .thumbnail{
-    max-height: 18vh;
+    max-height: 30vh;
     width: auto;
 }
 
 .actionDiv{
-  display: flex;
-  width: 25wv;
-  flex-direction: row;
-  justify-content: flex-start;
-  margin-top: 12px;
-  direction: rtl;
+  width: 20rem;
 }

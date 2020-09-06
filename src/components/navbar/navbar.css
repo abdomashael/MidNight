@@ -1,14 +1,14 @@
 .navbar {
   display: flex;
-  direction: rtl;
-  float: right;
+  /* direction: rtl; */
+  float: right; 
   font-size: 22px;
   font-family: BoutrosMBCDinkum, sans-serif;
 }
 
 .navbar-nav > a {
   color: white !important;
-  margin-left: auto;
+  /* margin-left: auto; */
 }
 
 .navbar-collapse > a {
@@ -27,12 +27,15 @@
   color: white !important;
   border-radius: 30px;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 1rem;
   font-family: BoutrosMBCDinkum, sans-serif;
   font-weight: 900;
   text-align: center;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  display: inline-block;
+  text-align: center;
+  align-content: center;
+  /* padding-top: 12px; */
+  /* padding-bottom: 12px; */
 }
 
 a:hover#btn {
