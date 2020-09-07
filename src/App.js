@@ -38,12 +38,11 @@ function App(props) {
             <Movies />
           </Route>
           <Route path="/movie/:id">
-            {/* <Soon/> */}
-            <MovieDetails/>
+            <Soon/>
+            {/* <MovieDetails/> */}
           </Route>
           <Route path="/series">
             <Soon />
-
             {/* <Series /> */}
           </Route>
           <Route path="/">
