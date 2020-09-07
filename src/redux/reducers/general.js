@@ -1,7 +1,7 @@
 import { ADD_GENRES, TOGGLE_LOADER } from "../actions";
 
 const initialState = {
-  genres: {},
+  genres: [],
   isLoadingData:false,
 };
 

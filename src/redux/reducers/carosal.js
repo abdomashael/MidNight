@@ -1,29 +1,16 @@
-import { ADD_THUMBNAILS, CURRENT_THUMBNAIL, ADD_TRENDS } from "../actions";
+import { ADD_Carosal_DATA } from "../actions";
 
 const initialState = {
-  currentThumbnailIdx: 0,
-  allThumbnails: [],
-  trends:[]
+  data:{}
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case ADD_THUMBNAILS:
+    case ADD_Carosal_DATA:
       return {
         ...state,
-        allThumbnails: action.payload.thumbnails,
+        data: action.payload.data,
       };
-
-    case CURRENT_THUMBNAIL:
-      return {
-        ...state,
-        currentThumbnailIdx: action.payload.thumbnailIdx,
-      };
-      case ADD_TRENDS:
-        return{
-          ...state,
-          trends:action.payload.trends
-        }
     default:
       return {
         ...state,
