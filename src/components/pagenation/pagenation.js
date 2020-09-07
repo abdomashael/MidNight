@@ -3,6 +3,8 @@ import styles from "./pagenation.module.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
+import Loader from "../loader/loader"
+
 const PageNo = (props) => {
   const [active, setActive] = useState(false);
 
@@ -47,10 +49,8 @@ const Pagnetion = (props) => {
 
   return (
     <div>
-      <div hidden={!props.loading} className={styles.loader_conatiner}>
-        <span className={styles.loader1}>
-          <span className={styles.loader2}></span>
-        </span>
+      <div hidden={!props.loading} >
+        <Loader/>
       </div>
       <span hidden={props.loading} className={styles.pagenation} onClick={showMoreOnClickHandler}>
         Show More

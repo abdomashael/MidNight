@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import CarosalMain from "../components/carosal_main/carosal_main";
 // import SectionItem from "../components/section_item/section_item";
 import Section from "../components/section/section";
-import Footer from "../components/footer/footer";
+import CarosalSlider from "../components/carousel_slider/carousel_slider"
 import Axios from "axios";
 import {
   ADD_HOME_SECTIONS,
   ADD_THUMBNAILS,
   ADD_TRENDS,
+  ADD_Carosal_DATA,
 } from "../redux/actions";
 import { connect } from "react-redux";
 
@@ -21,6 +22,7 @@ function Home(props) {
     );
     let trends = response.data.results;
     props.setTrends(trends);
+    props.setSideInfoData(trends[0])
     console.log("trends", trends);
     let thumbnails = trends.reduce(
       (total, current) => [
@@ -32,7 +34,6 @@ function Home(props) {
     props.setThumbnails(thumbnails);
     console.log(thumbnails);
   };
-
 
   let fetchHome = async () => {
     let response = await Axios.get(
@@ -48,12 +49,14 @@ function Home(props) {
     fetchCarosal();
     fetchHome();
   }, []);
-  
+
   return (
     <div className="App">
       {/* <p>{process.env.API_URL}</p> */}
       <div className="blockDiv">
-        <CarosalMain />
+        <CarosalMain type={1}>
+          <CarosalSlider/>
+        </CarosalMain>
       </div>
       <div className="section">
         {sectionsIDs.length > 0
@@ -74,6 +77,8 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({ type: ADD_THUMBNAILS, payload: { thumbnails: thumbnails } }),
     setTrends: (trends) =>
       dispatch({ type: ADD_TRENDS, payload: { trends: trends } }),
+    setSideInfoData: (data) =>
+      dispatch({ type: ADD_Carosal_DATA, payload: { data: data } }),
   };
 };
 
