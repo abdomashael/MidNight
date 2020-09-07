@@ -15,22 +15,14 @@ import axios from "axios";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Footer from "./components/footer/footer";
-
+import FetchGenres from "./utils/fecth_genres"
+import MovieDetails from "./pages/movie_details/movie_details";
 function App(props) {
-  useEffect(() => {
-    let fetchGenres = async () => {
-      console.log("genre");
+  useEffect(async() => {
+    
 
-      let response = await axios.get(
-        process.env.REACT_APP_API_URL + "/genre/movie/list"
-      );
-      // console.log(response.data.genres);
-      // let trends = response.data.results;
-      props.setGenres(response.data.genres);
-
-    };
-
-    fetchGenres();
+    const genres= await FetchGenres();
+    props.setGenres(genres);
   }, []);
 
   return (
@@ -44,6 +36,10 @@ function App(props) {
           <Route path="/movies">
             {/* <Soon/> */}
             <Movies />
+          </Route>
+          <Route path="/movie/:id">
+            {/* <Soon/> */}
+            <MovieDetails/>
           </Route>
           <Route path="/series">
             <Soon />

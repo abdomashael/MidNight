@@ -1,10 +1,26 @@
 .transparent {
     background: rgb(23,29,37);
-    background: linear-gradient(0deg, rgba(23,29,37,0.02) 20%, rgba(23,29,37,1) 110%);
+    /* background: linear-gradient(0deg, rgba(23,29,37,0.02) 20%, rgba(23,29,37,1) 110%); */
 }
 .dark {
   background-color: #171d25 !important;
 }
 
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  .transparent {
+    background: rgb(23,29,37);
+    background: linear-gradient(0deg, rgba(23,29,37,0.02) 20%, rgba(23,29,37,1) 110%);
+}
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .transparent {
+    background: rgb(23,29,37);
+    background: linear-gradient(0deg, rgba(23,29,37,0.02) 20%, rgba(23,29,37,1) 110%);
+}
+}
 
 
