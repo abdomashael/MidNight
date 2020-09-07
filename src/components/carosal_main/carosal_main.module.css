@@ -40,12 +40,12 @@
 }
 
 .mainContainer {
-  position: absolute;
+  /* position: absolute; */
   display: flex;
   flex-direction: column;
   justify-content: left;
   margin: auto;
-  height: 50%;
+  height: 100%;
   margin-bottom: 5%;
   margin-right: 25px;
   overflow-y: hidden;

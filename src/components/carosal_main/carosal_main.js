@@ -32,15 +32,15 @@ const CarosalMain = (props) => {
         <div className={styles.gradinatBackgroundHorzintal}></div>
       </div>
       <div className={styles.mainDiv}>
-        <Row>
+        {/* <Row> */}
           {/* <Col md="6"></Col> */}
-          <Col className={styles.mainContainer}>
+          <div className={styles.mainContainer}>
             {props.type===1?
             <SlideInfo data={props.data}/>
           :
           ""}
-          </Col>
-        </Row>
+          </div>
+        {/* </Row> */}
         {props.children}
       </div>
     </div>
