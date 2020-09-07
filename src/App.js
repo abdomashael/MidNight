@@ -19,8 +19,7 @@ import FetchGenres from "./utils/fecth_genres"
 import MovieDetails from "./pages/movie_details/movie_details";
 function App(props) {
   useEffect(async() => {
-    
-
+    console.log("api",process.env.REACT_APP_API_URL);
     const genres= await FetchGenres();
     props.setGenres(genres);
   }, []);
