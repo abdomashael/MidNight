@@ -4,54 +4,70 @@ import { connect } from "react-redux";
 
 import styles from "./slide_info.module.css";
 import ActionComponent from "../action_buttons/action";
+import fetchGenres from "../../utils/fecth_genres";
+import { ADD_GENRES } from "../../redux/actions";
 const SlideInfo = (props) => {
-  const [genres,setGenres] = useState("") 
+  const [genres, setGenres] = useState(<span></span>);
 
-  useEffect(()=>{
-    if (props.trends[props.idx]) {
-      let newGenres = props.genres.filter(genre=> props.trends[props.idx].genre_ids.includes(genre.id))
-      console.log("newGenres",newGenres);
-      setGenres( newGenres.map(genre=>genre.name).join(", ")
-      )    
-    }
-  },)
+  useEffect(() => {
+    const getGenres = async () => {
+      let genres = [];
+      if (props.genres.length === 0) {
+        genres = await fetchGenres();
+        props.setGenres(genres);
+      } else {
+        genres = props.genres;
+      }
+      if (props.data) {
+        let newGenres = props.genres.filter((genre) =>
+          props.data.genre_ids.includes(genre.id)
+        );
+        console.log("newGenres", newGenres);
+
+        setGenres(
+          <span className={styles.genre}>
+            {newGenres.map((genre) => genre.name).join(", ")}
+          </span>
+        );
+      }
+    };
+    //getGenres();
+  }, []);
+
   return (
     <div className=" mt-auto mr-auto ml-3 mb-auto">
       <div className={styles.subContainer}>
         <img
           className={styles.thumbnail}
           alt="thum"
-          src={props.thumbnails[props.idx]}
+          src={
+            props.data
+              ? process.env.REACT_APP_IMAGE_BASE_URL + props.data.poster_path
+              : ""
+          }
         />
       </div>
       <div className="mt-3">
         <span className={styles.subContainer}>
-          
-        <span className={styles.title}>
-            {props.trends[props.idx] ? props.trends[props.idx].title : ""}
+          <span className={styles.title}>
+            {props.data
+              ? props.data.title
+                ? props.data.title
+                : props.data.original_name
+              : ""}
           </span>
           <span>&nbsp;</span>
-
-          <span className={styles.genre}>
-            {genres}
-              {/* <img
-                src="https://shahid.mbc.net/static/fonts/38cd5d569d798c28d57d0ff1480501fe.svg"
-                alt="vip"
-              /> */}
-            </span>
-            <span>&nbsp;</span>
-          {/* <span className={styles.mainInfo}>{props.trends[props.idx]? props.trends[props.idx].overview:""}</span> */}
+          {/* <span className={styles.genre}>{props.data?props.data.vote_average:""}</span> */}
+          <span>&nbsp;</span>
         </span>
       </div>
       <div className={styles.subContainer}>
-        <p className={styles.para}>
-          {props.trends[props.idx] ? props.trends[props.idx].overview : ""}
-        </p>
+        <p className={styles.para}>{props.data ? props.data.overview : ""}</p>
       </div>
 
       <div className={styles.actionDiv}>
-          <ActionComponent wide={true} />
-        </div>
+        <ActionComponent wide={true} />
+      </div>
     </div>
   );
 };
@@ -64,11 +80,15 @@ SlideInfo.defaultProps = {
 
 const mapStateToProps = (state) => {
   return {
-    thumbnails: state.carosal.allThumbnails,
-    idx: state.carosal.currentThumbnailIdx,
-    trends: state.carosal.trends,
     genres: state.general.genres,
   };
 };
 
-export default connect(mapStateToProps)(SlideInfo);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setGenres: (genres) =>
+      dispatch({ type: ADD_GENRES, payload: { genres: genres } }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SlideInfo);

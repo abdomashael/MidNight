@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./section_item.module.css";
 import ActionComponent from "../action_buttons/action";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 const SectionItem = (props) => {
   const [isHover, setIsHove] = useState(false);
   const [genres, setGenres] = useState("");
@@ -34,7 +35,7 @@ const SectionItem = (props) => {
   };
 
   return (
-    <a href="https://shahidstatic1.akamaized.net/mediaObject/2020/No-Tags/Lee_La_Thumb_No_Tags_V3/original/Lee_La_Thumb_No_Tags_V3.jpg?height=253&width=450&croppingPoint=&version=1&type=webp">
+    <Link to={"/movie/"+props.data.id} >
       <div
         className={styles.mainDiv1}
         onMouseEnter={onMouseEnterHandler}
@@ -89,7 +90,7 @@ const SectionItem = (props) => {
           </div>
         </div>
       </div>
-    </a>
+    </Link>
   );
 };
 

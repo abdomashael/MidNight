@@ -17,13 +17,27 @@
 
 
 .genre {
-  color: aquamarine;
+  margin: 0;
+  height: 25px;
+  z-index: 3;
+  padding: 6px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: bolder;
+  
+  font-size: 0.90278vw;
+  padding-right: 8px;
+  padding-left: 8px;
+  color: #000;
+  background-color: rgb(245, 197, 24);
+  /* color: aquamarine;
   font-weight: 600;
   line-height: normal;
   font-size: 1vw;
   height: 1vw;
   font-style: normal;
-  font-family: 'BoutrosMBCDinkum';
+  font-family: 'BoutrosMBCDinkum'; */
 }
 
 .mainInfo {

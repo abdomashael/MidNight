@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./soon.module.css";
-import soon from "../../static/soon.png";
 import Logo from "../logo/logo";
 
 const Soon = () => {

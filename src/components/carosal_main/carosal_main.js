@@ -12,11 +12,17 @@ const CarosalMain = (props) => {
   const [image, setImage] = useState("");
 
   useEffect(() => {
-    if (props.trends[props.idx]){
-    //  console.log(process.env.REACT_APP_IMAGE_BASE_URL + props.trends[props.idx].backdrop_path);
-      setImage( <img alt="main\" className={styles.myImage} src={process.env.REACT_APP_IMAGE_BASE_URL + props.trends[props.idx].backdrop_path} ></img>);
+    if (props.data && props.type===1) {
+      //  console.log(process.env.REACT_APP_IMAGE_BASE_URL + props.trends[props.idx].backdrop_path);
+      setImage(
+        <img
+          alt="main"
+          className={styles.myImage}
+          src={process.env.REACT_APP_IMAGE_BASE_URL + props.data.backdrop_path}
+        ></img>
+      );
     }
-    }, [props.trends, props.idx]);
+  }, [props.data]);
 
   return (
     <div className={styles.carosalContainer}>
@@ -29,17 +35,13 @@ const CarosalMain = (props) => {
         <Row>
           {/* <Col md="6"></Col> */}
           <Col className={styles.mainContainer}>
-            <SlideInfo
-              // vipHidden={props.vipHidden}
-              // sessionHidden={props.sessionHidden}
-              // sessionNo={props.sessionNo}
-              // mainInfo={props.mainInfo}
-              // description={props.description}
-              // thumbnailSrc={props.thumbnailSrc}
-            ></SlideInfo>
+            {props.type===1?
+            <SlideInfo data={props.data}/>
+          :
+          ""}
           </Col>
         </Row>
-        <CarouselSlider></CarouselSlider>
+        {props.children}
       </div>
     </div>
   );
@@ -55,8 +57,7 @@ CarosalMain.defaultProps = {
 
 const mapStateToProps = (state) => {
   return {
-    idx: state.carosal.currentThumbnailIdx,
-    trends: state.carosal.trends,
+    data: state.carosal.data,
   };
 };
 

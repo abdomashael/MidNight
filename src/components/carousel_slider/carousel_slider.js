@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 
-import { CURRENT_THUMBNAIL } from "../../redux/actions";
+import { CURRENT_THUMBNAIL, ADD_Carosal_DATA } from "../../redux/actions";
 import { connect } from "react-redux";
-
 
 import Carousel from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 
 import {
   faChevronLeft,
@@ -27,13 +25,13 @@ const CarouselSlider = (props) => {
       console.log(window.innerWidth);
       numberOfSlidesChange(window.innerWidth);
     });
-
   }, []);
 
-
-  useEffect(()=>{
-    props.setCurrentIdx(current)
-  },[current])
+  useEffect(() => {
+    console.log("curre");
+    props.setSideInfoData(props.trends[current]);
+    props.setCurrentIdx(current);
+  }, [current]);
 
   const numberOfSlidesChange = (windowSize) => {
     if (windowSize < 500) {
@@ -90,11 +88,7 @@ const CarouselSlider = (props) => {
         {props.thumbnails.map((elementSrc, idx) => {
           return (
             <div key={idx}>
-              <img
-                className={styles.sliderItem}
-                alt="thum"
-                src={elementSrc}
-              />
+              <img className={styles.sliderItem} alt="thum" src={elementSrc} />
               <div
                 className={
                   current === idx ? styles.activeline : styles.inactiveLine
@@ -109,12 +103,20 @@ const CarouselSlider = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return { thumbnails: state.carosal.allThumbnails };
+  return {
+    thumbnails: state.home.allThumbnails,
+    idx: state.home.currentThumbnailIdx,
+    trends: state.home.trends,
+  };
 };
 
-const mapDispatchToProps = dispatch=>{
-  return{ 
-    setCurrentIdx: (idx)=>dispatch({type:CURRENT_THUMBNAIL,payload:{thumbnailIdx:idx}})}
-}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setCurrentIdx: (idx) =>
+      dispatch({ type: CURRENT_THUMBNAIL, payload: { thumbnailIdx: idx } }),
+    setSideInfoData: (data) =>
+      dispatch({ type: ADD_Carosal_DATA, payload: { data: data } }),
+  };
+};
 
-export default connect(mapStateToProps,mapDispatchToProps)(CarouselSlider);
+export default connect(mapStateToProps, mapDispatchToProps)(CarouselSlider);
