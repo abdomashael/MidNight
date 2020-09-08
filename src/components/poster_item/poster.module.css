@@ -5,9 +5,9 @@
   cursor: pointer;
   /* height: 24vw; */
 }
-.img:hover {
+ /* {
   width: 20vw;
-}
+} */
 
 .img_conatiner {
   position: relative;
@@ -20,15 +20,17 @@
   display: inline-block;
   width: 14vw;
   margin: 1.5vw;
-  padding: 1px;
+  margin-top: 3.6vw;
+  margin-bottom: 3.6vw;
   /* background-color: #09f; */
   color: white;
   /* box-shadow:  0 6px 6px 0 #09f6; */
+
 }
 
-.container:hover {
+.img:hover,.hover,.container:hover {
   margin: 0px;
-  width: 20vw;
+  width: 18vw;
   font-size: 1.5rem;
 }
 .top {

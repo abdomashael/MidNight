@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styles from "./poster.module.css";
 import Loader from "../loader/loader";
 import { Link } from "react-router-dom";
 const Poster = (props) => {
   const [onLoad, setOnLoad] = useState(false);
+  const imgRef = useRef(null);
+  
+
   return (
     <Link to={"/movie/"+props.data.id} >
-      <div className={styles.container}>
+      <div onMouseEnter={()=>{imgRef.current.className=styles.hover}} onMouseLeave={()=>{imgRef.current.className=styles.img}} className={styles.container}>
         <div className={styles.img_conatiner}>
           <img
+          ref={imgRef}
             alt="sssss"
             hidden={!onLoad}
             onLoad={setOnLoad}
