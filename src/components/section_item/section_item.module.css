@@ -2,11 +2,11 @@
   position: relative;
   /* direction: rtl; */
   margin: 3px;
-  margin-top: 25px;
+  margin-top: 30px;
   margin-bottom: 20px;
   display: inline-block;
-  width: 16vw;
-  height: 16vh;
+  width: 300px;
+  height: 150px;
   background-color: #181d25;
 }
 
@@ -16,8 +16,8 @@
   margin-bottom: 0px;
   margin-top: 0px;
   /* margin-bottom: 10px; */
-  width: 20vw;
-  height: 20vh;
+  width: 350px;
+  height: 200px;
   background: red;
   transition: width 0.5s, height 0.5s, margin-bottom 0.5s, margin-top 0.5s;
 }
@@ -132,8 +132,9 @@
 .footer {
   display: block;
   align-items: center;
-  margin-left: 10px;
-  width: 19vw;
+  margin-left: 5px;  margin-right: 5px;
+
+  width: 340px;
   margin-top: 10px;
   /* direction: rtl; */
 }

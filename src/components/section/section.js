@@ -6,13 +6,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./section.module.css";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
 
 const SectionIndicators = ({
-  windowWidth,
-  itemWidth,
-  numOfItems,
+  numOfIndicators,
   currentIndicatorChange,
   isHover,
   setReachMaxIndicator,
@@ -25,14 +23,13 @@ const SectionIndicators = ({
   }, [currentIndicatorChange]);
 
   useEffect(() => {
+    console.log("numOfIndicators",numOfIndicators);
     setIndicators([]);
     indicatorsCalc();
     setReachMaxIndicator(indicators.length - 1 === currentIndicator);
-  }, [currentIndicator, windowWidth]);
+  }, [currentIndicator,numOfIndicators]);
 
   const indicatorsCalc = () => {
-    let numOfIndicators = Math.ceil((itemWidth * numOfItems) / windowWidth);
-
     for (let index = 0; index < numOfIndicators; index++) {
       let indicatorColor =
         currentIndicator === index
@@ -58,6 +55,10 @@ const Section = (props) => {
 
   const [currentIndicator, setCurrentIndicator] = useState(0);
   const [reachMaxIndicator, setReachMaxIndicator] = useState(false);
+  const [numOfIndicators, setNumOfIndicators] = useState(0);
+
+  let conatinerRef = useRef(<div/>); 
+  let itemRef = useRef(null); 
 
   const [vw, setVW] = useState(
     Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
@@ -85,8 +86,14 @@ const Section = (props) => {
   useEffect(() => {
     if (props.sections.length > 0) {
       setSection(props.sections[props.sectionIdx]);
+      let numOfItems=props.sections[props.sectionIdx].results.length;
+      let numOfItemsPerScreen = Math.floor (conatinerRef.current.offsetWidth/300);
+      setNumOfIndicators(
+        Math.ceil(numOfItems/numOfItemsPerScreen )
+      );
+      console.log("sections",numOfIndicators);
     }
-  }, [props.sections]);
+  }, [props.sections,conatinerRef.current.offsetWidth]);
 
   const leftOnClickHandler = () => {
     const oldX = transformX;
@@ -101,15 +108,13 @@ const Section = (props) => {
   };
 
   return (
-    <div className={styles.conatiner}>
+    <div ref={conatinerRef} className={styles.conatiner}>
       <div className={styles.sectionTop}>
         <label className={styles.sectionName}>
           {section.section_name ? section.section_name : ""}
         </label>
         <SectionIndicators
-          windowWidth={windowWidth}
-          itemWidth={(vw * 16) / 100}
-          numOfItems={section.results ? section.results.length : 0}
+          numOfIndicators={numOfIndicators}
           currentIndicatorChange={currentIndicator}
           isHover={isHover}
           setReachMaxIndicator={setReachMaxIndicator}
@@ -152,44 +157,13 @@ const Section = (props) => {
           {section.results
             ? section.results.map((item) => (
                 <SectionItem
-                key={item.id}
+                ref={itemRef}
+                  key={item.id}
                   hoverChange={setIsHover}
                   data={item}
                 ></SectionItem>
               ))
             : ""}
-          {/* <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/>
-          <SectionItem hoverChange={setIsHover} vipHidden={false} liveHidden={false} title="لية ﻷ" sessionHidden={false} sessionNo={1} mainInfo=" هالة فاخر , أمنية خليل"/> */}
         </div>
       </div>
     </div>

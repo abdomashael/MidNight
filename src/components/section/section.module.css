@@ -30,9 +30,9 @@
 
   .flagLeft ,.flagRight  {
     position: absolute;
-    margin-top: 25px;
-    height: 16vh;
-    width: 2.8%;
+    margin-top: 30px;
+    height: 150px;
+    width: 50px;
     z-index: 1;
     background-color: rgba(111, 108, 106, 0.6);
     display: flex;
