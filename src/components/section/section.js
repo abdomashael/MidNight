@@ -23,11 +23,11 @@ const SectionIndicators = ({
   }, [currentIndicatorChange]);
 
   useEffect(() => {
-    console.log("numOfIndicators",numOfIndicators);
+    console.log("numOfIndicators", numOfIndicators);
     setIndicators([]);
     indicatorsCalc();
     setReachMaxIndicator(indicators.length - 1 === currentIndicator);
-  }, [currentIndicator,numOfIndicators]);
+  }, [currentIndicator, numOfIndicators]);
 
   const indicatorsCalc = () => {
     for (let index = 0; index < numOfIndicators; index++) {
@@ -48,52 +48,41 @@ const SectionIndicators = ({
 const Section = (props) => {
   const [section, setSection] = useState({});
   const [transformX, setTrasformX] = useState(0);
-  const [windowWidth, setWindowWidth] = useState(
-    window.innerWidth - (window.innerWidth * 15) / 100
-  );
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isHover, setIsHover] = useState(false);
 
   const [currentIndicator, setCurrentIndicator] = useState(0);
   const [reachMaxIndicator, setReachMaxIndicator] = useState(false);
   const [numOfIndicators, setNumOfIndicators] = useState(0);
 
-  let conatinerRef = useRef(<div/>); 
-  let itemRef = useRef(null); 
-
-  const [vw, setVW] = useState(
-    Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
-  );
-
-  // useEffect(() => {
-  //   // console.log(props.sections);
-
-  //   window.addEventListener("resize", () => {
-  //     let width = (vw * 15) / 100;
-
-  //     while (width < window.innerWidth) {
-  //       width += (vw * 15) / 100;
-  //     }
-  //     // width += (vw * 16) / 100/2;
-
-  //     setWindowWidth(width);
-  //   });
-  // }, []);
+  let conatinerRef = useRef(<div />);
 
   useEffect(() => {
-    setWindowWidth(window.innerWidth - (window.innerWidth * 15) / 100);
-  }, []);
+    setTrasformX(0);
+    setCurrentIndicator(0);
+    if (conatinerRef.current.offsetWidth < 600) {
+      setWindowWidth(
+        conatinerRef.current.offsetWidth -
+          conatinerRef.current.offsetWidth * 0.4
+      );
+    } else {
+      setWindowWidth(
+        conatinerRef.current.offsetWidth -
+          conatinerRef.current.offsetWidth * 0.15
+      );
+    }
+  }, [conatinerRef.current.offsetWidth]);
 
   useEffect(() => {
     if (props.sections.length > 0) {
       setSection(props.sections[props.sectionIdx]);
-      let numOfItems=props.sections[props.sectionIdx].results.length;
-      let numOfItemsPerScreen = Math.floor (conatinerRef.current.offsetWidth/300);
-      setNumOfIndicators(
-        Math.ceil(numOfItems/numOfItemsPerScreen )
+      let numOfItems = props.sections[props.sectionIdx].results.length;
+      let numOfItemsPerScreen = Math.floor(
+        conatinerRef.current.offsetWidth / 300
       );
-      console.log("sections",numOfIndicators);
+      setNumOfIndicators(Math.ceil(numOfItems / numOfItemsPerScreen));
     }
-  }, [props.sections,conatinerRef.current.offsetWidth]);
+  }, [props.sections, conatinerRef.current.offsetWidth]);
 
   const leftOnClickHandler = () => {
     const oldX = transformX;
@@ -157,7 +146,6 @@ const Section = (props) => {
           {section.results
             ? section.results.map((item) => (
                 <SectionItem
-                ref={itemRef}
                   key={item.id}
                   hoverChange={setIsHover}
                   data={item}
