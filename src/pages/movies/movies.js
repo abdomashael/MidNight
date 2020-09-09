@@ -1,6 +1,5 @@
 import React, { useEffect, useState, Fragment } from "react";
 import Axios from "axios";
-import SectionItem from "../../components/section_item/section_item";
 import styles from "./movies.module.css";
 import Pagnetion from "../../components/pagenation/pagenation";
 import { connect } from "react-redux";
@@ -35,7 +34,7 @@ const Movies = (props) => {
   useEffect(() => {
     if (currentPage){
     const list = currentPage.map((movie,idx) => (
-      <span key={movie.id} className={styles.section}>
+      <span key={movie.id} >
         {/* <div>{movie.id}</div> */}
         <Poster
           key={idx}
