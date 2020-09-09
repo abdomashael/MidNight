@@ -10,7 +10,6 @@ const PageNo = (props) => {
 
   useEffect(() => {
     setActive(props.pageNo === props.active);
-    console.log("page", props.pageNo);
   }, [props.pageNo]);
 
   return (
@@ -32,7 +31,6 @@ const Pagnetion = (props) => {
   };
 
   useEffect(() => {
-    console.log("currentPage", currentPage);
     props.setPageNo(currentPage);
   }, [currentPage]);
 

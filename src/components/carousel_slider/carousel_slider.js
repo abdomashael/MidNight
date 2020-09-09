@@ -22,13 +22,11 @@ const CarouselSlider = (props) => {
   useEffect(() => {
     numberOfSlidesChange(window.innerWidth);
     window.addEventListener("resize", () => {
-      console.log(window.innerWidth);
       numberOfSlidesChange(window.innerWidth);
     });
   }, []);
 
   useEffect(() => {
-    console.log("curre");
     props.setSideInfoData(props.trends[current]);
     props.setCurrentIdx(current);
   }, [current]);
@@ -48,7 +46,6 @@ const CarouselSlider = (props) => {
   };
 
   const onChangeHandler = (slide) => {
-    // console.log(Math.abs(slide % 10));
 
     setCurrent(slide);
   };

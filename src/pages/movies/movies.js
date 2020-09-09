@@ -14,14 +14,11 @@ const Movies = (props) => {
   const [pageNo, setPageNo] = useState(1);
 
   const getMoviePage = async (sorting, pageNo) => {
-    // console.log("getMoviePage");
-    console.log("pageNo",pageNo);
     props.setLoader(true);
     const response = await Axios.get(
       process.env.REACT_APP_API_URL +
         `/discover/movie/?sorted_by=${sorting}&page=${pageNo}`
     );
-    // console.log("getMoviePage", response.data);
     props.setLoader(false);
 
     setCurrentPage(response.data.results);
@@ -42,10 +39,6 @@ const Movies = (props) => {
         />
       </span>
     ));
-
-    console.log("aaaaaa",currentPage);
-    console.log(moviesList.length);
-    console.log(list.length);
     
     moviesList.length>0? setMoviesList( moviesList.concat(list)):setMoviesList(list);
   }

@@ -47,13 +47,12 @@ const scrapeImages = async () => {
 
         const urls = Array.from(images).map(v => v.src);
 
-        console.log(urls);
         return urls
     });
   
     await browser.close();
 
-    // console.log(data);
+    // console.(data);
 
 
     return data;

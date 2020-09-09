@@ -16,14 +16,12 @@ function Home(props) {
   const [sectionsIDs, setSectionsIDs] = useState([]);
 
   let fetchCarosal = async () => {
-    console.log("data");
     let response = await Axios.get(
       process.env.REACT_APP_API_URL + "/trending/all/week"
     );
     let trends = response.data.results;
     props.setTrends(trends);
     props.setSideInfoData(trends[0])
-    console.log("trends", trends);
     let thumbnails = trends.reduce(
       (total, current) => [
         ...total,
@@ -32,7 +30,6 @@ function Home(props) {
       []
     );
     props.setThumbnails(thumbnails);
-    console.log(thumbnails);
   };
 
   let fetchHome = async () => {
@@ -41,7 +38,6 @@ function Home(props) {
     );
     props.setSections(response.data.sections);
 
-    // console.log(response.data.sections);
     let ids = response.data.sections.map((_, idx) => idx);
     setSectionsIDs(ids);
   };

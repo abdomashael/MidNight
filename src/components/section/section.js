@@ -23,7 +23,6 @@ const SectionIndicators = ({
   }, [currentIndicatorChange]);
 
   useEffect(() => {
-    console.log("numOfIndicators", numOfIndicators);
     setIndicators([]);
     indicatorsCalc();
     setReachMaxIndicator(indicators.length - 1 === currentIndicator);

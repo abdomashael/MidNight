@@ -22,7 +22,6 @@ const SlideInfo = (props) => {
         let newGenres = props.genres.filter((genre) =>
           props.data.genre_ids.includes(genre.id)
         );
-        console.log("newGenres", newGenres);
 
         setGenres(
           <span className={styles.genre}>

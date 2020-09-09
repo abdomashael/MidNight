@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useDebugValue } from "react";
 
 import styles from "./carosal_main.module.css";
 import CarouselSlider from "../carousel_slider/carousel_slider";
@@ -12,8 +12,7 @@ const CarosalMain = (props) => {
   const [image, setImage] = useState("");
 
   useEffect(() => {
-    if (props.data && props.type===1) {
-      //  console.log(process.env.REACT_APP_IMAGE_BASE_URL + props.trends[props.idx].backdrop_path);
+    if (props.data && props.type === 1) {
       setImage(
         <img
           alt="main"
@@ -24,6 +23,7 @@ const CarosalMain = (props) => {
     }
   }, [props.data]);
 
+  useDebugValue(props.extraData)
   return (
     <div className={styles.carosalContainer}>
       {image}
@@ -33,13 +33,14 @@ const CarosalMain = (props) => {
       </div>
       <div className={styles.mainDiv}>
         {/* <Row> */}
-          {/* <Col md="6"></Col> */}
-          <div className={styles.mainContainer}>
-            {props.type===1?
-            <SlideInfo data={props.data}/>
-          :
-          ""}
-          </div>
+        {/* <Col md="6"></Col> */}
+        <div className={styles.mainContainer}>
+          {props.type === 1 ? (
+            <SlideInfo data={props.data} />
+          ) : (
+            <SlideInfo data={props.extraData} />
+          )}
+        </div>
         {/* </Row> */}
         {props.children}
       </div>
