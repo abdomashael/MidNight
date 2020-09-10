@@ -1,21 +1,27 @@
 .App {
+  /* max-width: 10vw; */
   /* background-color: #171d25 !important; */
-  overflow-x: hidden;
-  
+  /* overflow-x: hidden; */
 }
 
-.blockDiv{
+.blockDiv {
   margin-bottom: 3vh;
   display: block;
   position: relative;
 }
 
-.section{
-  /* position: absolute; */
-  bottom: 0;
-  right: 0;
-  left: 0;
-  top: 100vh;
+.section {
+  margin-top: 30px;
 }
 
-
+.loader {
+  position: absolute;
+  top: 2vw;
+  bottom: auto;
+  /* right: auto; */
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  margin: auto;
+  align-items: center;
+}
