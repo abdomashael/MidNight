@@ -5,6 +5,7 @@ import Pagnetion from "../../components/pagenation/pagenation";
 import { connect } from "react-redux";
 import { TOGGLE_LOADER } from "../../redux/actions";
 import Poster from "../../components/poster_item/poster";
+import Footer from "../../components/footer/footer";
 
 const Movies = (props) => {
   const [currentPage, setCurrentPage] = useState([]);
@@ -50,6 +51,7 @@ const Movies = (props) => {
         {moviesList}
       </div>
       <Pagnetion pages={pagesCount} setPageNo={setPageNo} />
+      <Footer/>
     </Fragment>
   );
 };
