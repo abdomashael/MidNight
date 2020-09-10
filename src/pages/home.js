@@ -54,7 +54,6 @@ function Home(props) {
   };
   useEffect(() => {
     fetchHome();
-    console.log("fetch");
   }, []);
 
   useEffect(() => {

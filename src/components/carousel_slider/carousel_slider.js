@@ -26,10 +26,7 @@ const CarouselSlider = (props) => {
     });
   }, []);
 
-  useEffect(() => {
-    props.setSideInfoData(props.trends[current]);
-    props.setCurrentIdx(current);
-  }, [current]);
+
 
   const numberOfSlidesChange = (windowSize) => {
     if (windowSize < 500) {
@@ -46,8 +43,9 @@ const CarouselSlider = (props) => {
   };
 
   const onChangeHandler = (slide) => {
-
     setCurrent(slide);
+    props.setSideInfoData(props.trends[slide]);
+    props.setCurrentIdx(slide);
   };
 
   return (

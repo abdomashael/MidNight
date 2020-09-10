@@ -72,7 +72,7 @@ const CustomNavbar = () => {
           <Link className="nav-link" to="/series">
             Series
           </Link>
-          <Link className="nav-link" href="#link2">
+          <Link className="nav-link" to="/series">
             Kids
           </Link>
           {/* <Nav.Link href="#link3">مباشر</Nav.Link> */}

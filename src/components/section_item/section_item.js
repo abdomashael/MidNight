@@ -81,7 +81,7 @@ const SectionItem = (props) => {
               </div>
 
               <div className={styles.footer}>
-                <ActionComponent />
+                <ActionComponent type={2} />
               </div>
             </div>
           </div>

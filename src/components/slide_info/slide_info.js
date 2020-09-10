@@ -1,47 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext, useDebugValue } from "react";
 
 import { connect } from "react-redux";
 
 import styles from "./slide_info.module.css";
 import ActionComponent from "../action_buttons/action";
-import fetchGenres from "../../utils/fecth_genres";
 import { ADD_GENRES } from "../../redux/actions";
+import { DataContext } from "../carosal_main/carosal_main";
 const SlideInfo = (props) => {
-  const [genres, setGenres] = useState(<span></span>);
+  const [genres, setGenres] = useState(null);
+  const movie = useContext(DataContext);
 
   useEffect(() => {
-    const getGenres = async () => {
-      let genres = [];
-      if (props.genres.length === 0) {
-        genres = await fetchGenres();
-        props.setGenres(genres);
-      } else {
-        genres = props.genres;
-      }
-      if (props.data) {
-        let newGenres = props.genres.filter((genre) =>
-          props.data.genre_ids.includes(genre.id)
-        );
-
-        setGenres(
-          <span className={styles.genre}>
-            {newGenres.map((genre) => genre.name).join(", ")}
-          </span>
-        );
-      }
-    };
-    //getGenres();
-  }, []);
+    if (movie.data && movie.data.genres) {
+      setGenres(movie.data.genres.map((genre) => genre.name).join(", "));
+    }
+  }, [movie]);
 
   return (
-    <div className=" mt-auto mr-auto ml-3 mb-auto">
+    <div className=" mt-0 mr-auto ml-3 mb-auto">
       <div className={styles.subContainer}>
         <img
           className={styles.thumbnail}
           alt="thum"
           src={
-            props.data
-              ? process.env.REACT_APP_IMAGE_BASE_URL + props.data.poster_path
+            movie.data
+              ? process.env.REACT_APP_IMAGE_BASE_URL + movie.data.poster_path
               : ""
           }
         />
@@ -49,24 +32,54 @@ const SlideInfo = (props) => {
       <div className="mt-3">
         <span className={styles.subContainer}>
           <span className={styles.title}>
-            {props.data
-              ? props.data.title
-                ? props.data.title
-                : props.data.original_name
+            {movie.data
+              ? movie.data.title
+                ? movie.data.title
+                : movie.data.original_name
               : ""}
           </span>
           <span>&nbsp;</span>
-          {/* <span className={styles.genre}>{props.data?props.data.vote_average:""}</span> */}
           <span>&nbsp;</span>
         </span>
       </div>
       <div className={styles.subContainer}>
-        <p className={styles.para}>{props.data ? props.data.overview : ""}</p>
+        <p className={movie.type===1? styles.para + " " + styles.paraExtra:styles.para}>
+          {movie.data ? movie.data.overview : ""}
+        </p>
       </div>
 
-      <div className={styles.actionDiv}>
-        <ActionComponent wide={true} />
+      {movie.data && movie.data.status ? (
+        <span className={styles.subInfo}>
+          <span className={styles.part}></span>{" "}
+          <span className={styles.green}>{movie.data.status}</span>
+        </span>
+      ) : (
+        ""
+      )}
+
+      {genres ? (
+        <span className={styles.subInfo}>
+          <span className={styles.part}></span>{" "}
+          <span className={styles.green}>{genres}</span>
+        </span>
+      ) : (
+        ""
+      )}
+      <div>
+      {movie.data && movie.data.vote_average ? (
+        <span className={styles.subInfo}>
+          <span className={styles.part}></span>{" "}
+          <span className={styles.green}>AVG.Vote:</span>
+          <span className={styles.gold}>{movie.data.vote_average}</span>
+        </span>
+      ) : (
+        ""
+      )}
       </div>
+      <div className={styles.actionDiv}>
+       <ActionComponent wide={true} type={movie.type === 1 ? 1 : 2} movie={movie.data} /> 
+      </div>
+      {props.childern}
     </div>
   );
 };

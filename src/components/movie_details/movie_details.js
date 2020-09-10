@@ -31,7 +31,6 @@ const MovieDetails = (props) => {
         youtubeDivRef.current.title = youtube.name;
         setYoutubeHide(false);
       }
-      // console.log("response.data",response.data);
       setExtraData(response.data);
     };
     getDetails();

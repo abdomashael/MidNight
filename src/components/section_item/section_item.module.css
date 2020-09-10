@@ -130,7 +130,7 @@
 }
 
 .footer {
-  display: block;
+  display: inline-block;
   align-items: center;
   margin-left: 5px;  margin-right: 5px;
 
