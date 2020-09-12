@@ -6,11 +6,12 @@ import { connect } from "react-redux";
 import { TOGGLE_LOADER } from "../../redux/actions";
 import Poster from "../../components/poster_item/poster";
 import Footer from "../../components/footer/footer";
+import Sort, { SORT, TYPE } from "../../components/sort/sort";
 
 const Movies = (props) => {
   const [currentPage, setCurrentPage] = useState([]);
-  const [moviesList, setMoviesList] = useState([]);
-  const [isHover, setIsHover] = useState(true);
+  const [moviesList, setMoviesList] = useState();
+  const [sorting, setSorting] = useState(`${SORT[0]}.${TYPE[0]}`);
   const [pagesCount, setPagesCount] = useState(0);
   const [pageNo, setPageNo] = useState(1);
 
@@ -26,7 +27,7 @@ const Movies = (props) => {
     if (pagesCount === 0) setPagesCount(response.data.total_pages);
   };
   useEffect(() => {
-    getMoviePage("popularity.desc", pageNo);
+    getMoviePage(sorting, pageNo);
   }, [pageNo]);
 
   useEffect(() => {
@@ -41,18 +42,29 @@ const Movies = (props) => {
       </span>
     ));
     
-    moviesList.length>0? setMoviesList( moviesList.concat(list)):setMoviesList(list);
+    moviesList&&moviesList.length>0? setMoviesList( moviesList.concat(list)):setMoviesList(list);
   }
   }, [currentPage]);
 
+  const sortChangeHandler =(sort,type)=>{
+    const newSorting =`${sort.value}.${type.value}` 
+    console.log(sort);
+    if (newSorting !== sorting) {
+      setMoviesList([])
+      getMoviePage(newSorting,1) 
+      setSorting(newSorting)     
+    }
+  }
+
   return (
-    <Fragment>
+    <div className={styles.page}>
+       {moviesList?<Sort onSortChange={sortChangeHandler} />:""}
       <div className={styles.container}>
-        {moviesList}
+        {moviesList?moviesList:""}
       </div>
       <Pagnetion pages={pagesCount} setPageNo={setPageNo} />
       <Footer/>
-    </Fragment>
+    </div>
   );
 };
 

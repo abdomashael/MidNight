@@ -1,12 +1,20 @@
 .container{
     display: flex;
     margin: auto;
-    margin-top: 10vh;
-    margin-right: 2vw;
-    margin-left: 2vw;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.page{
+    padding-top: 10vh;
+    margin-right: 2vw;
+    margin-left: 2vw;
+    margin: auto;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    
 }
 
 .section{

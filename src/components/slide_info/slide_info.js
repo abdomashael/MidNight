@@ -43,19 +43,16 @@ const SlideInfo = (props) => {
         </span>
       </div>
       <div className={styles.subContainer}>
-        <p className={movie.type===1? styles.para + " " + styles.paraExtra:styles.para}>
+        <p
+          className={
+            movie.type === 1
+              ? styles.para + " " + styles.paraExtra
+              : styles.para
+          }
+        >
           {movie.data ? movie.data.overview : ""}
         </p>
       </div>
-
-      {movie.data && movie.data.status ? (
-        <span className={styles.subInfo}>
-          <span className={styles.part}></span>{" "}
-          <span className={styles.green}>{movie.data.status}</span>
-        </span>
-      ) : (
-        ""
-      )}
 
       {genres ? (
         <span className={styles.subInfo}>
@@ -66,18 +63,48 @@ const SlideInfo = (props) => {
         ""
       )}
       <div>
-      {movie.data && movie.data.vote_average ? (
+        {movie.data && movie.data.vote_average ? (
+          <span className={styles.subInfo}>
+            <span className={styles.part}></span>{" "}
+            <span className={styles.green}>Vote AVG:</span>
+            <span className={styles.gold}>{movie.data.vote_average}</span>
+          </span>
+        ) : (
+          ""
+        )}
+      </div>
+
+      {movie.data && movie.data.status ? (
         <span className={styles.subInfo}>
           <span className={styles.part}></span>{" "}
-          <span className={styles.green}>AVG.Vote:</span>
-          <span className={styles.gold}>{movie.data.vote_average}</span>
+          <span className={styles.green}>{movie.data.status} : </span>
+          <span className={styles.gold}>{movie.data.release_date}</span>
         </span>
       ) : (
         ""
       )}
+
+      <div>
+        {movie.data && movie.data.revenue > 0 ? (
+          <span className={styles.subInfo}>
+            <span className={styles.part}></span>{" "}
+            <span className={styles.green}>revenue : </span>
+            <span className={styles.gold}>
+              {movie.data.revenue  > 1.0e+9
+                ? `${(movie.data.revenue / 1.0e+9).toFixed(2)} B`
+                : `${(movie.data.revenue / 1.0e+6).toFixed(2)} M`}
+            </span>
+          </span>
+        ) : (
+          ""
+        )}
       </div>
       <div className={styles.actionDiv}>
-       <ActionComponent wide={true} type={movie.type === 1 ? 1 : 2} movie={movie.data} /> 
+        <ActionComponent
+          wide={true}
+          type={movie.type === 1 ? 1 : 2}
+          movie={movie.data}
+        />
       </div>
       {props.childern}
     </div>
