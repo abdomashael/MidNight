@@ -46,6 +46,7 @@
 
 .flag{
   margin: 12px;
+  cursor: pointer;
 }
 .flag:hover {
     color: #0c9;

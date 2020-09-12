@@ -1,4 +1,4 @@
-.mainDiv1 {
+.mainDiv {
   position: relative;
   /* direction: rtl; */
   margin: 3px;
@@ -10,9 +10,11 @@
   background-color: #181d25;
 }
 
-.mainDiv1:hover {
+.mainDiv:hover,.hoveredDiv {
+ 
+  position: relative;
   display: inline-block;
-  margin: 2px;
+  margin: 3px;
   margin-bottom: 0px;
   margin-top: 0px;
   /* margin-bottom: 10px; */
@@ -35,14 +37,14 @@
   background: rgb(23, 29, 37);
   background: linear-gradient(
     0deg,
-    rgba(23, 29, 37, 1) 0%,
+    rgba(23, 29, 37, 1) 15%,
     rgba(255, 255, 255, 0) 100%
   );
 
   width: 100%;
   height: 100%;
   bottom: 0;
-  opacity: 0;
+  opacity: 100;
 }
 
 .bakground:hover {
@@ -82,7 +84,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.90278vw;
+  font-size: 1rem;
   padding-right: 8px;
   padding-left: 8px;
 }
@@ -96,21 +98,22 @@
 }
 
 .body {
-  margin-left: 12px;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: block;
+  margin: auto;
+  margin-left: 12px;
+
+  /* align-items: flex-start; */
   /* direction: rtl; */
 }
 
-.session {
+.genres {
   display: inline-block;
   font-weight: 300;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: aquamarine;
   font-family: "BoutrosMBCDinkum";
-  width: 15vw;
+  width: 300px;
   text-overflow: ellipsis;
   overflow: hidden;
 }
@@ -118,12 +121,15 @@
 .mainInfo {
   color: #cecece;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 1rem;
   font-family: "BoutrosMBCDinkum";
 }
 
 .container {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   z-index: 1;
   bottom: 0;
   left: auto;
@@ -141,10 +147,10 @@
 .title {
   display: inline-block;
   font-weight: 600;
-  font-size: 24px;
+  font-size:1.5rem;
   color: white;
   font-family: "BoutrosMBCDinkum";
-  width: 80%;
+  width: 340px;
   text-overflow: ellipsis;
   overflow: hidden;
 }

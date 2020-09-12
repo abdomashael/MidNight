@@ -16,7 +16,7 @@
 
 .loader {
   position: absolute;
-  top: 2vw;
+  top: 20vh;
   bottom: auto;
   /* right: auto; */
   display: block;
