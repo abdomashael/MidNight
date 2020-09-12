@@ -47,7 +47,7 @@ const MovieDetails = (props) => {
           ) : (
             ""
           )}
-          \ <Footer />
+          {props.children}
         </CarosalMain>
       );
 

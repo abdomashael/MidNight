@@ -16,7 +16,7 @@ import axios from "axios";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Footer from "./components/footer/footer";
 import FetchGenres from "./utils/fecth_genres";
-import MovieDetails from "./components/movie_details/movie_details";
+import MovieDetailsPage from "./pages/movie_detail";
 function App(props) {
   const fetchGenres = async () => {
     const genres = await FetchGenres();
@@ -40,7 +40,7 @@ function App(props) {
           </Route>
           <Route path="/movie/:id">
             {/* <Soon/> */}
-            <MovieDetails />
+            <MovieDetailsPage />
           </Route>
           <Route path="/series">
             <Soon />

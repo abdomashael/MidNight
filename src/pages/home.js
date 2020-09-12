@@ -76,7 +76,7 @@ function Home(props) {
             {sections}
             <Footer />
           </CarosalMain>
-        )}{" "}
+        )}
       </div>
     </div>
   );
