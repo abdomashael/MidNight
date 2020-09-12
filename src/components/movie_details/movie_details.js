@@ -1,5 +1,5 @@
 import Styles from "./movie_details.module.css";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useDebugValue } from "react";
 import Axios from "axios";
 import { useParams } from "react-router-dom";
 import CarosalMain from "../carosal_main/carosal_main";
@@ -11,49 +11,58 @@ import Footer from "../footer/footer";
 
 const MovieDetails = (props) => {
   let { id } = useParams();
-  const [youtubeHide, setYoutubeHide] = useState(true);
-  const [extraData, setExtraData] = useState({});
-  let youtubeDivRef = useRef("");
-  let carosalMainRef = useRef(null);
+  const [extraData, setExtraData] = useState(null);
+  const [isLoadind, setIsLoading] = useState(true);
+  let [carosal, setCarosal] = useState();
+
   useEffect(() => {
+    window.scrollTo(0, 0);
     const getDetails = async () => {
       const response = await Axios.get(
         process.env.REACT_APP_API_URL + "/movie/" + id
       );
-
-      let youtube = response.data.videos.results.filter(
-        (video) => video.site === "YouTube"
-      )[0];
-
-      if (youtube) {
-        youtubeDivRef.current.src =
-          "https://www.youtube.com/embed/" + youtube.key;
-        youtubeDivRef.current.title = youtube.name;
-        setYoutubeHide(false);
-      }
+      console.log(response.data);
       setExtraData(response.data);
     };
     getDetails();
   }, []);
-  return (
-    <div>
-      <div ref={carosalMainRef}>
+
+  useEffect(() => {
+    if (extraData) {
+      let youtube = extraData.videos.results.filter(
+        (video) => video.site === "YouTube"
+      )[0];
+
+      setCarosal(
         <CarosalMain extraData={extraData}>
-          {" "}
-          <div>
+          {youtube ? (
             <iframe
-              hidden={youtubeHide}
-              // onLoadedData={<Loader/>}
+              name={youtube.name}
+              src={"https://www.youtube.com/embed/" + youtube.key}
               className={Styles.iframe}
-              ref={youtubeDivRef}
               title={"name"}
               allowFullScreen={true}
               frameborder="0"
             ></iframe>
-          </div>
-          <Footer />
+          ) : (
+            ""
+          )}
+          \ <Footer />
         </CarosalMain>
-      </div>
+      );
+
+      setIsLoading(false);
+    }
+  }, [extraData]);
+  return (
+    <div>
+      {isLoadind ? (
+        <div className="loader">
+          <Loader />
+        </div>
+      ) : (
+        carosal
+      )}
     </div>
   );
 };

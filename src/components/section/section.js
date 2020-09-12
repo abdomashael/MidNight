@@ -8,6 +8,7 @@ import styles from "./section.module.css";
 
 import React, { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
+import Carousel from "@brainhubeu/react-carousel";
 
 const SectionIndicators = ({
   numOfIndicators,
@@ -46,6 +47,7 @@ const SectionIndicators = ({
 
 const Section = (props) => {
   const [section, setSection] = useState({});
+  const [items, setItems] = useState();
   const [transformX, setTrasformX] = useState(0);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isHover, setIsHover] = useState(false);
@@ -54,34 +56,32 @@ const Section = (props) => {
   const [reachMaxIndicator, setReachMaxIndicator] = useState(false);
   const [numOfIndicators, setNumOfIndicators] = useState(0);
 
-  let conatinerRef = useRef(<div />);
+  // let conatinerRef = useRef(<div />);
 
   useEffect(() => {
     setTrasformX(0);
     setCurrentIndicator(0);
-    if (conatinerRef.current.offsetWidth < 600) {
-      setWindowWidth(
-        conatinerRef.current.offsetWidth -
-          conatinerRef.current.offsetWidth * 0.4
-      );
-    } else {
-      setWindowWidth(
-        conatinerRef.current.offsetWidth -
-          conatinerRef.current.offsetWidth * 0.15
-      );
-    }
-  }, [conatinerRef.current.offsetWidth]);
+  }, [windowWidth]);
 
   useEffect(() => {
     if (props.sections.length > 0) {
       setSection(props.sections[props.sectionIdx]);
-      let numOfItems = props.sections[props.sectionIdx].results.length;
-      let numOfItemsPerScreen = Math.floor(
-        conatinerRef.current.offsetWidth / 300
+      setItems(
+        props.sections[props.sectionIdx].results.map((item) => (
+          <SectionItem
+            key={item.id}
+            hoverChange={setIsHover}
+            hideDetails={windowWidth < 600 ? false : true}
+            data={item}
+          ></SectionItem>
+        ))
       );
+
+      let numOfItems = props.sections[props.sectionIdx].results.length;
+      let numOfItemsPerScreen = Math.floor(windowWidth / 300);
       setNumOfIndicators(Math.ceil(numOfItems / numOfItemsPerScreen));
     }
-  }, [props.sections, conatinerRef.current.offsetWidth]);
+  }, [props.sections, windowWidth]);
 
   const leftOnClickHandler = () => {
     const oldX = transformX;
@@ -95,8 +95,19 @@ const Section = (props) => {
     setCurrentIndicator(currentIndicator + 1);
   };
 
+  useEffect(() => {
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+    return (_) => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
-    <div ref={conatinerRef} className={styles.conatiner}>
+    <div className={styles.conatiner}>
       <div className={styles.sectionTop}>
         <label className={styles.sectionName}>
           {section.section_name ? section.section_name : ""}
@@ -109,49 +120,90 @@ const Section = (props) => {
         />
       </div>
       <div>
-        <span
-          onMouseEnter={() => setIsHover(true)}
-          onMouseLeave={() => setIsHover(false)}
-          hidden={!isHover || currentIndicator === 0}
-          className={styles.flagLeft}
-          onClick={leftOnClickHandler}
-        >
-          <FontAwesomeIcon
-            size="2x"
-            icon={faChevronLeft}
-            color="#ffff"
-            className={styles.icon}
-          />
-        </span>
-        <span
-          onMouseEnter={() => setIsHover(true)}
-          onMouseLeave={() => setIsHover(false)}
-          hidden={!isHover || reachMaxIndicator}
-          className={styles.flagRight}
-          onClick={rightOnClickHandler}
-        >
-          <FontAwesomeIcon
-            size="2x"
-            icon={faChevronRight}
-            color="#ffff"
-            className={styles.icon}
-          />
-        </span>
+        {windowWidth < 600 ? (
+          <Carousel
+            // centered
+            // className={styles.slider}
+            slidesPerPage={1}
+            clickToChange
+            fastSwipe
+            // draggable
+            arrowLeft={
+              <FontAwesomeIcon
+                className={styles.miniFlag}
+                size="lg"
+                icon={faChevronLeft}
+                inverse
+                color="#ffff"
+              />
+            }
+            arrowLeftDisabled={
+              <FontAwesomeIcon
+                className={styles.miniFlag}
+                size="lg"
+                icon={faChevronLeft}
+                // hidden={true}
+              />
+            }
+            arrowRight={
+              <FontAwesomeIcon
+                className={styles.miniFlag}
+                size="lg"
+                icon={faChevronRight}
+                color="#ffff"
+              />
+            }
+            arrowRightDisabled={
+              <FontAwesomeIcon
+                className={styles.miniFlag}
+                size="lg"
+                // hidden={true}
+                icon={faChevronRight}
+              />
+            }
+            addArrowClickHandler
+          >
+            {items}
+          </Carousel>
+        ) : (
+          <div>
+            <span
+              onMouseEnter={() => setIsHover(true)}
+              onMouseLeave={() => setIsHover(false)}
+              hidden={!isHover || currentIndicator === 0}
+              className={styles.flagLeft}
+              onClick={leftOnClickHandler}
+            >
+              <FontAwesomeIcon
+                size="2x"
+                icon={faChevronLeft}
+                color="#ffff"
+                className={styles.icon}
+              />
+            </span>
+            <span
+              onMouseEnter={() => setIsHover(true)}
+              onMouseLeave={() => setIsHover(false)}
+              hidden={!isHover || reachMaxIndicator}
+              className={styles.flagRight}
+              onClick={rightOnClickHandler}
+            >
+              <FontAwesomeIcon
+                size="2x"
+                icon={faChevronRight}
+                color="#ffff"
+                className={styles.icon}
+              />
+            </span>
 
-        <div
-          className={isHover ? styles.sectionHover : styles.section}
-          style={{ transform: ` translate3d(${transformX}px, 0px, 0px) ` }}
-        >
-          {section.results
-            ? section.results.map((item) => (
-                <SectionItem
-                  key={item.id}
-                  hoverChange={setIsHover}
-                  data={item}
-                ></SectionItem>
-              ))
-            : ""}
-        </div>
+            <div
+              className={isHover ? styles.sectionHover : styles.section}
+              style={{ transform: ` translate3d(${transformX}px, 0px, 0px) ` }}
+            >
+              {items}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

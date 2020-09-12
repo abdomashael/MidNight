@@ -26,8 +26,6 @@ const CarouselSlider = (props) => {
     });
   }, []);
 
-
-
   const numberOfSlidesChange = (windowSize) => {
     if (windowSize < 500) {
       setNoOfSlides(2);
@@ -43,14 +41,20 @@ const CarouselSlider = (props) => {
   };
 
   const onChangeHandler = (slide) => {
-    setCurrent(slide);
-    props.setSideInfoData(props.trends[slide]);
-    props.setCurrentIdx(slide);
+    slide=slide<0?props.trends.length+slide:slide;
+    props.setSideInfoData(props.trends[slide%props.trends.length]);
+
+    setCurrent(slide%props.trends.length);
+
   };
 
   return (
     <div className={styles.container}>
       <Carousel
+      infinite
+      centered
+        autoPlay={5000}
+        animationSpeed={1000}
         className={styles.slider}
         slidesPerPage={numOfSlides}
         clickToChange
@@ -80,8 +84,7 @@ const CarouselSlider = (props) => {
         addArrowClickHandler
         onChange={onChangeHandler}
       >
-        {props.thumbnails.map((elementSrc, idx) => {
-          return (
+        {props.thumbnails.map((elementSrc, idx) => 
             <div key={idx}>
               <img className={styles.sliderItem} alt="thum" src={elementSrc} />
               <div
@@ -90,8 +93,7 @@ const CarouselSlider = (props) => {
                 }
               ></div>
             </div>
-          );
-        })}
+        )}
       </Carousel>
     </div>
   );

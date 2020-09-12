@@ -16,7 +16,7 @@ import Loader from "../components/loader/loader";
 import section from "../components/section/section";
 
 function Home(props) {
-  const [sections, setSections] = useState([]);
+  const [sections, setSections] = useState(null);
   const [isLoading, serIsLoading] = useState(true);
   let fetchCarosal = async () => {
     let response = await Axios.get(
@@ -36,6 +36,8 @@ function Home(props) {
   };
 
   let fetchHome = async () => {
+
+    window.scrollTo(0, 0);
     await fetchCarosal();
 
     let response = await Axios.get(
@@ -57,7 +59,9 @@ function Home(props) {
   }, []);
 
   useEffect(() => {
-     serIsLoading(false);
+    if (sections) {
+      serIsLoading(false);      
+    }
   }, [sections]);
   return (
     <div className="App">
