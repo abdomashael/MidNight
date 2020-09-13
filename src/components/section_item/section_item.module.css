@@ -23,6 +23,8 @@
   background: red;
   transition: width 0.5s, height 0.5s, margin-bottom 0.5s, margin-top 0.5s;
 }
+
+
 .sectionImg {
   position: absolute;
   width: 100%;
@@ -153,4 +155,13 @@
   width: 340px;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+
+@media only screen and (max-width: 450px) {
+ 
+ .hoveredDiv{
+  width: 270px;
+  height: 170px;
+ }
 }

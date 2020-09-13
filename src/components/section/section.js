@@ -122,7 +122,7 @@ const Section = (props) => {
       <div>
         {windowWidth < 600 ? (
           <Carousel
-            // centered
+            centered
             // className={styles.slider}
             slidesPerPage={1}
             clickToChange
