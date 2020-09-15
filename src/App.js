@@ -17,6 +17,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Footer from "./components/footer/footer";
 import FetchGenres from "./utils/fecth_genres";
 import MovieDetailsPage from "./pages/movie_detail";
+import Auth from "./pages/auth/auth";
+
 function App(props) {
   const fetchGenres = async () => {
     const genres = await FetchGenres();
@@ -44,6 +46,10 @@ function App(props) {
           </Route>
           <Route path="/series">
             <Soon />
+            {/* <Series /> */}
+          </Route>
+          <Route path="/auth/:type">
+            <Auth/>
             {/* <Series /> */}
           </Route>
           <Route path="/">
