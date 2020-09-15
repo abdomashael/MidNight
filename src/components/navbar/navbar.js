@@ -17,6 +17,7 @@ import logo from "../../static/logo.svg";
 import cssClasses from "./navbar.module.css";
 import "./navbar.css";
 import Logo from "../../components/logo/logo";
+import classNames from "classnames";
 
 const CustomNavbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -81,11 +82,17 @@ const CustomNavbar = () => {
         <Nav.Link className="pb-0" href="#link2">
           <FontAwesomeIcon icon={faSearch} inverse />
         </Nav.Link>
-        <Nav.Link href="#link2">Login</Nav.Link>
+        <Link className="nav-link" to="/auth/login">
+          Login
+        </Link>
 
-        <Nav.Link id="btn" className={cssClasses.button}>
-          <span className="pr-2">Sign up</span>
-        </Nav.Link>
+        <Link
+          to="/auth/signup"
+          id="btn"
+          className={classNames(cssClasses.button, "nav-link")}
+        >
+          Sign up
+        </Link>
       </Navbar.Collapse>
       {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
     </Navbar>

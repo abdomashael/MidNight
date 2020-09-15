@@ -1,57 +1,19 @@
 .navbar {
   display: flex;
   /* direction: rtl; */
-  float: right; 
-  font-size: 22px;
-  font-family: BoutrosMBCDinkum, sans-serif;
+  float: right;
+  font-size: 1.1rem;
+  font-weight: 800;
+  font-family: "BoutrosMBCDinkum";
 }
 
-.navbar-nav > a {
+.nav-link{
+  display: inline-block;
   color: white !important;
-  /* margin-left: auto; */
 }
-
-.navbar-collapse > a {
-  color: white !important;
-  /* margin-left: auto; */
-}
-
-.navbar-nav > .active,
-.navbar-nav > a:hover,
-.navbar-collapse > a:hover {
+.active{
   color: #0c9 !important;
 }
 
-#btn {
-  background: linear-gradient(90deg, #0c9 0, #09f);
-  color: white !important;
-  border-radius: 30px;
-  font-weight: bold;
-  font-size: 1rem;
-  font-family: BoutrosMBCDinkum, sans-serif;
-  font-weight: 900;
-  text-align: center;
-  display: inline-block;
-  text-align: center;
-  align-content: center;
-  /* padding-top: 12px; */
-  /* padding-bottom: 12px; */
-}
 
-a:hover#btn {
-  background: #0c9 !important;
-}
 
-#kids {
-  color: white !important;
-  font-weight: bold;
-}
-
-a:hover#kids {
-  color: white !important;
-  font-weight: bold;
-}
-
-#logo {
-  width: 65px;
-}
