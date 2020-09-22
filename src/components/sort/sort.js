@@ -42,21 +42,21 @@ const type = [
 const customStyles = {
   menu: (provided, state) => ({
     ...provided,
-    backgroundColor: "#0c9",
-    borderColor: "#0c9",
+    backgroundColor: "var( --primary-color )",
+    borderColor: "var( --primary-color )",
   }),
   option: (provided, state) => ({
     ...provided,
-    color: state.isSelected ? "#09f" : "white",
-    backgroundColor: state.isFocused ? "#0d9" : "#0c9",
-    borderColor: "#0c9",
+    color: state.isSelected ? "var( --secondary-color )" : "white",
+    backgroundColor: state.isFocused ? "#0d9" : "var( --primary-color )",
+    borderColor: "var( --primary-color )",
   }),
   control: (provided) => ({
     ...provided,
     // none of react-select's styles are passed to <Control />
-    backgroundColor: "#0c9",
-    borderColor: "#0c9",
-    color: "#09f",
+    backgroundColor: "var( --primary-color )",
+    borderColor: "var( --primary-color )",
+    color: "var( --secondary-color )",
   }),
 };
 

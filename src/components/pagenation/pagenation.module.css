@@ -8,12 +8,12 @@
   margin-right: 20%;
   text-align: center;
   align-self: center;
-  background-color: #0c9;
+  background-color: var( --primary-color );
   color: white;
   cursor: pointer;
   font-weight: 900;
 }
 
 .pagenation:hover {
-  background-color: #09f;
+  background-color: var( --secondary-color );
 }

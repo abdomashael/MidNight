@@ -9,10 +9,10 @@
     margin: auto;
   display: inline-block;
   border: 8px solid transparent; /* Light grey */
-  border-top: 8px solid #0c9; /* Blue */
-  border-right: 8px solid #09f; /* Blue */
-  border-left: 8px solid #09f; /* Blue */
-  border-bottom: 8px solid #0c9; /* Blue */
+  border-top: 8px solid var( --primary-color ); /* Blue */
+  border-right: 8px solid var( --secondary-color ); /* Blue */
+  border-left: 8px solid var( --secondary-color ); /* Blue */
+  border-bottom: 8px solid var( --primary-color ); /* Blue */
   border-radius: 50%;
   width: 60px;
   height: 60px;

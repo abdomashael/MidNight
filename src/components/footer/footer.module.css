@@ -36,7 +36,7 @@
 }
 
 .item > a:hover {
-  color: #0c9;
+  color: var( --primary-color );
   text-decoration: none;
 }
 .break {

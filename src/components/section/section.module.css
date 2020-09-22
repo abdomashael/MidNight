@@ -102,9 +102,9 @@
   }
 
   .indicatorActive{
-    border: 2px solid #0c9;
+    border: 2px solid var( --primary-color );
 
-    background: #0c9 !important;
+    background: var( --primary-color ) !important;
   }
 
 

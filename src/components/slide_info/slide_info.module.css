@@ -24,13 +24,13 @@
 .part{
   display: inline;
   padding: .8rem 2px;
-  background-color: #09f;
+  background-color: var( --secondary-color );
 }
 .green {
   display: inline-block;
   border-radius: 6px;
   text-transform: capitalize;
-  color: #0c9;
+  color: var( --primary-color );
   font-weight: 800;
   font-size: 1.7rem;
   padding: 8px;

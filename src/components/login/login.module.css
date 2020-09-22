@@ -58,7 +58,7 @@
 
 .login {
   margin: 4vh 0;
-  background: linear-gradient(90deg, #0c9, #09f);
+  background: linear-gradient(90deg, var( --primary-color ), var( --secondary-color ));
   color: white !important;
   border-radius: 40px;
   font-weight: bold;
@@ -79,7 +79,7 @@
 }
 
 .login:hover {
-  background: #0c9;
+  background: var( --primary-color );
 }
 
 .or {

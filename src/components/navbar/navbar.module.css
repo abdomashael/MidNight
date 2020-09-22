@@ -22,7 +22,7 @@
 }
 
 .button:hover {
-  background: #0c9 !important;
+  background: var( --primary-color ) !important;
   color: white !important;
 }
 
@@ -46,7 +46,7 @@
   }
 
   .button{
-    background: linear-gradient(90deg, #0c9 0, #09f);
+    background: linear-gradient(90deg, var( --primary-color ) 0, var( --secondary-color ));
     color: white !important;
     border-radius: 30px;
     font-weight: bold;
@@ -60,7 +60,7 @@
   }
   
   .button:hover{
-    background: #0c9 !important;
+    background: var( --primary-color ) !important;
     color: white !important;
   }
   
