@@ -1,16 +1,16 @@
 .img {
-    margin-top: 9vh;
     width: 100vw;
-    height: 91vh;
-    background-position: center center;
-    background-repeat: repeat;
+    height: 110vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
   }
 .layer {
     position: absolute;
     top: 0;
   
     width: 100vw;
-    height: 100vh;
+    height: 110vh;
     background-color: #171d25;
     opacity: 0.85;
   
