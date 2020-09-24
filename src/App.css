@@ -1,11 +1,12 @@
 :root{
   --primary-color:#0c9;
   --secondary-color:#09f;
+  --main-backgroud-color:#171d25;
 }
 
 .App {
   /* max-width: 10vw; */
-  /* background-color: #171d25 !important; */
+  /* background-color: var( --main-backgroud-color ) !important; */
   /* overflow-x: hidden; */
 }
 

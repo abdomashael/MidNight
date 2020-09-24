@@ -11,7 +11,7 @@
   
     width: 100vw;
     height: 110vh;
-    background-color: #171d25;
+    background-color: var( --main-backgroud-color );
     opacity: 0.85;
   
     /* z-index: 2; */

@@ -5,7 +5,7 @@ body {
     sans-serif,'BoutrosMBCDinkum';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #171d25 !important;
+  background-color: var( --main-backgroud-color ) !important;
   overflow-x: hidden;
 }
 

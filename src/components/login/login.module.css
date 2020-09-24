@@ -16,7 +16,7 @@
   transform: translate(-50%, 0); 
   padding: 2vh 5vw;
   border-radius: 12px;
-  background-color: #171d25;
+  background-color: var( --main-backgroud-color );
   box-shadow: 3px 3px 3px #111;
 }
 /* 
@@ -96,7 +96,7 @@
 
 .or>span{
   display: inline-block;
-  background-color: #171d25;
+  background-color: var( --main-backgroud-color );
 }
 
 .signup{
