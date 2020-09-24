@@ -48,7 +48,7 @@ function App(props) {
             <Soon />
             {/* <Series /> */}
           </Route>
-          <Route path="/auth/:type">
+          <Route path="/auth">
             <Auth/>
             {/* <Series /> */}
           </Route>

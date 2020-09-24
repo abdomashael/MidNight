@@ -82,12 +82,12 @@ const CustomNavbar = () => {
         <Nav.Link className="pb-0" href="#link2">
           <FontAwesomeIcon icon={faSearch} inverse />
         </Nav.Link>
-        <Link className="nav-link" to="/auth/login">
+        <Link className="nav-link" to="/auth?type=login">
           Login
         </Link>
 
         <Link
-          to="/auth/signup"
+          to="/auth/type=signup"
           id="btn"
           className={classNames(cssClasses.button, "nav-link")}
         >
