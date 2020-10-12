@@ -5,7 +5,7 @@
   cursor: pointer;
 }
 
-.img_conatiner {
+.img_container {
   position: relative;
   text-align: center;
   color: white;
@@ -18,9 +18,9 @@
   margin: 1.5vw;
   margin-top: 3.6vw;
   margin-bottom: 3.6vw;
-  /* background-color: #09f; */
+  /* background-color: var( --secondary-color ); */
   color: white;
-  /* box-shadow:  0 6px 6px 0 #09f6; */
+  /* box-shadow:  0 6px 6px 0 var( --secondary-color )6; */
 
 }
 

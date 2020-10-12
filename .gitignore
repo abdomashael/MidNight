@@ -23,6 +23,7 @@ package-lock.json
 .env
 .env.development
 .cert
+.idea
 
 npm-debug.log*
 yarn-debug.log*

@@ -8,9 +8,9 @@
 }
 
 .mid {
-    color: #0c9;
+    color: var( --primary-color );
 }
 
 .night{
-    color:  #09f;
+    color:  var( --secondary-color );
 }

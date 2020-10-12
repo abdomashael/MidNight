@@ -8,9 +8,9 @@ const Poster = (props) => {
   
 
   return (
-    <Link to={"/movie/"+props.data.id} >
+    <Link to={`/${props.type}/`+props.data.id} >
       <div onMouseEnter={()=>{imgRef.current.className=styles.hover}} onMouseLeave={()=>{imgRef.current.className=styles.img}} className={styles.container}>
-        <div className={styles.img_conatiner}>
+        <div className={styles.img_container}>
           <img
           ref={imgRef}
             alt="sssss"

@@ -16,7 +16,7 @@
   transform: translate(-50%, 0); 
   padding: 2vh 5vw;
   border-radius: 12px;
-  background-color: #171d25;
+  background-color: var( --main-backgroud-color );
   box-shadow: 3px 3px 3px #111;
 }
 /* 
@@ -58,7 +58,7 @@
 
 .login {
   margin: 4vh 0;
-  background: linear-gradient(90deg, #0c9, #09f);
+  background: linear-gradient(90deg, var( --primary-color ), var( --secondary-color ));
   color: white !important;
   border-radius: 40px;
   font-weight: bold;
@@ -79,7 +79,7 @@
 }
 
 .login:hover {
-  background: #0c9;
+  background: var( --primary-color );
 }
 
 .or {
@@ -96,7 +96,7 @@
 
 .or>span{
   display: inline-block;
-  background-color: #171d25;
+  background-color: var( --main-backgroud-color );
 }
 
 .signup{

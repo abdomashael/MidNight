@@ -10,6 +10,20 @@ import React, { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import Carousel from "@brainhubeu/react-carousel";
 
+const indicatorsCalc = (currentIndicator,numOfIndicators,setIndicatorsHandler) => {
+  for (let index = 0; index < numOfIndicators; index++) {
+    let indicatorColor =
+        currentIndicator === index
+            ? styles.indicatorActive
+            : styles.indicatorInactive;
+    let indicatorStyle = `${styles.indicator} ${indicatorColor}`;
+    setIndicatorsHandler((old) => [
+      ...old,
+      <div className={indicatorStyle} key={index}/>,
+    ]);
+  }
+};
+
 const SectionIndicators = ({
   numOfIndicators,
   currentIndicatorChange,
@@ -25,23 +39,11 @@ const SectionIndicators = ({
 
   useEffect(() => {
     setIndicators([]);
-    indicatorsCalc();
+    indicatorsCalc(currentIndicator,numOfIndicators,setIndicators);
     setReachMaxIndicator(indicators.length - 1 === currentIndicator);
-  }, [currentIndicator, numOfIndicators]);
+  }, [currentIndicator, indicators.length, numOfIndicators, setReachMaxIndicator]);
 
-  const indicatorsCalc = () => {
-    for (let index = 0; index < numOfIndicators; index++) {
-      let indicatorColor =
-        currentIndicator === index
-          ? styles.indicatorActive
-          : styles.indicatorInactive;
-      let indicatorStyle = `${styles.indicator} ${indicatorColor}`;
-      setIndicators((old) => [
-        ...old,
-        <div className={indicatorStyle} key={index}></div>,
-      ]);
-    }
-  };
+
   return <div hidden={!isHover}>{indicators}</div>;
 };
 
@@ -69,11 +71,11 @@ const Section = (props) => {
       setItems(
         props.sections[props.sectionIdx].results.map((item) => (
           <SectionItem
-            key={item.id}
-            hoverChange={setIsHover}
-            hideDetails={windowWidth < 600 ? false : true}
-            data={item}
-          ></SectionItem>
+    key={item.id}
+    hoverChange={setIsHover}
+    hideDetails={windowWidth >= 600}
+    data={item}
+    />
         ))
       );
 
@@ -81,7 +83,7 @@ const Section = (props) => {
       let numOfItemsPerScreen = Math.floor(windowWidth / 300);
       setNumOfIndicators(Math.ceil(numOfItems / numOfItemsPerScreen));
     }
-  }, [props.sections, windowWidth]);
+  }, [props.sectionIdx, props.sections, windowWidth]);
 
   const leftOnClickHandler = () => {
     const oldX = transformX;
@@ -107,7 +109,7 @@ const Section = (props) => {
   }, []);
 
   return (
-    <div className={styles.conatiner}>
+    <div className={styles.container}>
       <div className={styles.sectionTop}>
         <label className={styles.sectionName}>
           {section.section_name ? section.section_name : ""}

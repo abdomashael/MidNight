@@ -7,8 +7,9 @@ import { TOGGLE_LOADER } from "../../redux/actions";
 import Poster from "../../components/poster_item/poster";
 import Footer from "../../components/footer/footer";
 import Sort, { SORT, TYPE } from "../../components/sort/sort";
+import {getPage} from "../../utils/API";
 
-const Movies = (props) => {
+const Movies = ({setLoader,type}) => {
   const [currentPage, setCurrentPage] = useState([]);
   const [moviesList, setMoviesList] = useState();
   const [sorting, setSorting] = useState(`${SORT[0]}.${TYPE[0]}`);
@@ -16,12 +17,9 @@ const Movies = (props) => {
   const [pageNo, setPageNo] = useState(1);
 
   const getMoviePage = async (sorting, pageNo) => {
-    props.setLoader(true);
-    const response = await Axios.get(
-      process.env.REACT_APP_API_URL +
-        `/discover/movie/?sorted_by=${sorting}&page=${pageNo}`
-    );
-    props.setLoader(false);
+    setLoader(true);
+    const response = await getPage(type,sorting,pageNo)
+    setLoader(false);
 
     setCurrentPage(response.data.results);
     if (pagesCount === 0) setPagesCount(response.data.total_pages);
@@ -32,10 +30,12 @@ const Movies = (props) => {
 
   useEffect(() => {
     if (currentPage){
+      console.log(currentPage)
     const list = currentPage.map((movie,idx) => (
       <span key={movie.id} >
         {/* <div>{movie.id}</div> */}
         <Poster
+            type={type==="tv"?"series":type}
           key={idx}
           data={movie}
         />

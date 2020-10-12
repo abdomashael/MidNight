@@ -4,7 +4,7 @@ const Loader = () => {
   return (
     <div className={styles.loader_conatiner}>
       <span className={styles.loader1}>
-        <span className={styles.loader2}></span>
+        <span className={styles.loader2}/>
       </span>
     </div>
   );

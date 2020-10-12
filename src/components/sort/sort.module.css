@@ -37,7 +37,7 @@
     cursor: pointer;
     border-radius: 60px;
     padding: 14px;
-    background-color: #09f;
+    background-color: var( --secondary-color );
     border-color: transparent;
     -moz-box-shadow:     0 0 50px #000000;
     -webkit-box-shadow:  0 0 50px #000000;
@@ -45,7 +45,7 @@
 }
 
 .para{
-    color: #0c9;
+    color: var( --primary-color );
     text-align: center;
     margin: auto 0;
     font-size: 1.2rem;

@@ -32,7 +32,7 @@
   margin-top: 8px;
   width: 50px;
   height: 2px;
-  background: #0c9;
+  background: var( --primary-color );
   animation-name: line_animation;
   animation-duration: .5s;
   animation-timing-function: linear; 
@@ -49,7 +49,7 @@
   cursor: pointer;
 }
 .flag:hover {
-    color: #0c9;
+    color: var( --primary-color );
 }
 
 .m{

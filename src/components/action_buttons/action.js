@@ -24,7 +24,7 @@ const ActionComponent = (props) => {
   };
 
   const moreButton = (
-    <Link  to={`/movie/${props.movie?props.movie.id:id}`}>
+    <Link key={props.movie?props.movie.id:id}  to={`/movie/${props.movie?props.movie.id:id}`}>
       <span className={styles.fullBtn}>
         <span
           className={`${styles.btnInner} ${props.wide ? styles.wide : null} `}
