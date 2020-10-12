@@ -2,11 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   Navbar,
   Nav,
-  NavDropdown,
-  Form,
-  FormControl,
-  Button,
-  NavLink,
+ 
 } from "react-bootstrap";
 
 import { Link, useLocation } from "react-router-dom";
@@ -17,11 +13,10 @@ import logo from "../../static/logo.svg";
 import cssClasses from "./navbar.module.css";
 import "./navbar.css";
 import Logo from "../../components/logo/logo";
-import classNames from "classnames";
+import cx from "classnames";
 
 const CustomNavbar = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [classes, setClasses] = useState("fixed-top");
   const [activeClasses, setActive] = useState("nav-link active");
 
   let location = useLocation();
@@ -36,23 +31,15 @@ const CustomNavbar = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const scollClass = scrolled ? cssClasses.dark : cssClasses.transparent;
-    setClasses("fixed-top " + scollClass);
-  }, [scrolled]);
-
   return (
-    <Navbar className={classes} expand="lg" variant="dark">
+    <Navbar className={cx("fixed-top",scrolled ? cssClasses.dark : cssClasses.transparent)} expand="lg" variant="dark">
       <Navbar.Brand>
         <Link
           className={location.pathname === "/" ? activeClasses : "nav-link"}
           to="/"
         >
           <Logo />
-        </Link>
-
-        {/* <img id="logo" src={"https://f1.pngfuel.com/png/119/663/684/facebook-art-masters-degree-school-logo-licentiate-baccalaureus-bird-owl-png-clip-art.png"} alt="logo" /> */}
-      </Navbar.Brand>
+        </Link>      </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className={"mr-auto"}>
@@ -89,7 +76,7 @@ const CustomNavbar = () => {
         <Link
           to="/auth/type=signup"
           id="btn"
-          className={classNames(cssClasses.button, "nav-link")}
+          className={cx(cssClasses.button, "nav-link")}
         >
           Sign up
         </Link>

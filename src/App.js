@@ -18,6 +18,7 @@ import Footer from "./components/footer/footer";
 import FetchGenres from "./utils/fecth_genres";
 import MovieDetailsPage from "./pages/movie_detail";
 import Auth from "./pages/auth/auth";
+import Profile from "./pages/profile/profile";
 
 function App(props) {
   const fetchGenres = async () => {
@@ -50,6 +51,10 @@ function App(props) {
           </Route>
           <Route path="/auth">
             <Auth/>
+            {/* <Series /> */}
+          </Route> 
+          <Route path="/profile">
+            <Profile/>
             {/* <Series /> */}
           </Route>
           <Route path="/">

@@ -8,7 +8,7 @@ const Soon = () => {
       {/* <span className={styles.logo}> */}
         <Logo logo={styles.logo}/>
       {/* </span> */}
-      <span>Coming Soon .... </span>
+      <span style={{'margin-top': '5vw'}}>Coming Soon .... </span>
     </div>
   );
 };
