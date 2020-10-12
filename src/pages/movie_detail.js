@@ -3,10 +3,10 @@ import Footer from "../components/footer/footer";
 import MovieDetails from "../components/movie_details/movie_details";
 import Sort from "../components/sort/sort";
 
-const MovieDetailsPage = () => {
+const MovieDetailsPage = (props) => {
   return (
     <div>
-      <MovieDetails>
+      <MovieDetails type={props.type}>
         <Footer />
       </MovieDetails>
     </div>
