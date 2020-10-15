@@ -7,7 +7,7 @@
 /src/seed/scraper/node_modules
 /src/seed/scraper/package-lock.json
 package-lock.json
-
+yarn.lock
 # testing
 /coverage
 
