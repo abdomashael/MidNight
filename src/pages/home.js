@@ -33,6 +33,17 @@ function Home(props) {
       []
     );
     props.setThumbnails(thumbnails);
+
+    const cacheImages = await thumbnails.map(src=>{
+      return new Promise(function (resolve,reject) {
+        const img = new Image();
+        img.src = src;
+        img.onload=resolve
+        img.onerror = reject
+      })
+    })
+
+    await Promise.all(cacheImages)
   };
 
   let fetchHome = async () => {
