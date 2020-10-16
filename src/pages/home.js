@@ -48,7 +48,7 @@ function Home(props) {
     props.setThumbnails(thumbnails);
 
     await cacheIt(thumbnails)
-    await cacheIt(trends.reduce(
+    cacheIt(trends.reduce(
         (total, current) => [
           ...total,
           process.env.REACT_APP_IMAGE_BASE_URL + current.backdrop_path,
