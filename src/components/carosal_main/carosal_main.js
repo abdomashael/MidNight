@@ -16,7 +16,7 @@ const CarosalMain = (props) => {
     const [data, setData] = useState(null);
     useEffect(() => {
         if (props.extraData) {
-            setImage(
+            setImage(prev=>
                 <Suspense fallback={<Loader/>}>
                     <img
                         alt="main"
@@ -32,7 +32,7 @@ const CarosalMain = (props) => {
 
     useEffect(() => {
         if (props.data && props.type === 1) {
-            setImage(
+            setImage(prev=>
                 <Suspense fallback={<Loader/>}>
                     <img
                         alt="main"

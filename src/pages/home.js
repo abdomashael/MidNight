@@ -15,6 +15,19 @@ import Footer from "../components/footer/footer";
 import Loader from "../components/loader/loader";
 import section from "../components/section/section";
 
+
+const cacheIt = async (arr)=>{
+  const cacheImages = await arr.map(src=>{
+    return new Promise(function (resolve,reject) {
+      const img = new Image();
+      img.src = src;
+      img.onload=resolve
+      img.onerror = reject
+    })
+  })
+
+  await Promise.all(cacheImages)
+}
 function Home(props) {
   const [sections, setSections] = useState(null);
   const [isLoading, serIsLoading] = useState(true);
@@ -34,16 +47,15 @@ function Home(props) {
     );
     props.setThumbnails(thumbnails);
 
-    const cacheImages = await thumbnails.map(src=>{
-      return new Promise(function (resolve,reject) {
-        const img = new Image();
-        img.src = src;
-        img.onload=resolve
-        img.onerror = reject
-      })
-    })
+    await cacheIt(thumbnails)
+    await cacheIt(trends.reduce(
+        (total, current) => [
+          ...total,
+          process.env.REACT_APP_IMAGE_BASE_URL + current.backdrop_path,
+        ],
+        []
+    ))
 
-    await Promise.all(cacheImages)
   };
 
   let fetchHome = async () => {
