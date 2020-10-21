@@ -17,7 +17,7 @@ const Poster = (props) => {
             hidden={!onLoad}
             onLoad={setOnLoad}
             className={styles.img}
-            src={process.env.REACT_APP_IMAGE_BASE_URL + props.data.poster_path}
+            src={process.env.REACT_APP_IMAGE_BASE_URL_W300+ props.data.poster_path}
           />
           <div hidden={onLoad}>
             <Loader />

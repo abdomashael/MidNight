@@ -14,6 +14,7 @@ import { connect } from "react-redux";
 import Footer from "../components/footer/footer";
 import Loader from "../components/loader/loader";
 import section from "../components/section/section";
+import {getCarousal, getHome} from "../utils/API";
 
 
 const cacheIt = async (arr)=>{
@@ -31,67 +32,70 @@ const cacheIt = async (arr)=>{
 function Home(props) {
   const [sections, setSections] = useState(null);
   const [isLoading, serIsLoading] = useState(true);
-  let fetchCarosal = async () => {
-    let response = await Axios.get(
-      process.env.REACT_APP_API_URL + "/trending/all/week"
-    );
+  let fetchCarousal = async () => {
+    let response = await getCarousal();
     let trends = response.data.results;
     props.setTrends(trends);
     props.setSideInfoData(trends[0]);
     let thumbnails = trends.reduce(
       (total, current) => [
         ...total,
-        process.env.REACT_APP_IMAGE_BASE_URL + current.poster_path,
+        process.env.REACT_APP_IMAGE_BASE_URL_W300+ current.poster_path,
       ],
       []
     );
     props.setThumbnails(thumbnails);
 
     await cacheIt(thumbnails)
-    cacheIt(trends.reduce(
-        (total, current) => [
-          ...total,
-          process.env.REACT_APP_IMAGE_BASE_URL + current.backdrop_path,
-        ],
-        []
-    ))
+    // cacheIt(trends.reduce(
+    //     (total, current) => [
+    //       ...total,
+    //       process.env.REACT_APP_IMAGE_BASE_URL + current.backdrop_path,
+    //     ],
+    //     []
+    // ))
 
   };
 
   let fetchHome = async () => {
 
     window.scrollTo(0, 0);
-    await fetchCarosal();
+    await fetchCarousal();
 
-    let response = await Axios.get(
-      process.env.REACT_APP_API_URL + "/page/home"
-    );
+    let response = await getHome()
     props.setSections(response.data.sections);
 
     let ids = response.data.sections.map((_, idx) => idx);
     setSections(
       <div className="section">
         {ids.length > 0
-          ? ids.map((idx) => <Section key={idx} sectionIdx={idx}></Section>)
+          ? ids.map((idx) => <Section key={idx} sectionIdx={idx}/>)
           : ""}
       </div>
     );
   };
   useEffect(() => {
-    fetchHome();
+    if (props.trends&&props.trends.length===0){
+      fetchHome().then(_ => serIsLoading(false));
+    }else {
+      let ids = props.sections.map((_, idx) => idx);
+      setSections(
+          <div className="section">
+            {ids.length > 0
+                ? ids.map((idx) => <Section key={idx} sectionIdx={idx}/>)
+                : ""}
+          </div>
+      );
+      serIsLoading(false)
+    }
   }, []);
 
-  useEffect(() => {
-    if (sections) {
-      serIsLoading(false);      
-    }
-  }, [sections]);
   return (
     <div className="App">
       <div className="blockDiv">
         {isLoading ? (
           <div className="loader">
-            <Loader></Loader>
+            <Loader/>
           </div>
         ) : (
           <CarosalMain type={1}>
@@ -104,6 +108,12 @@ function Home(props) {
     </div>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    trends: state.home.trends,
+    sections: state.home.sections,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -118,4 +128,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

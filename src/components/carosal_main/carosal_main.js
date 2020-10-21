@@ -22,7 +22,7 @@ const CarosalMain = (props) => {
                         alt="main"
                         className={styles.myImage}
                         src={
-                            process.env.REACT_APP_IMAGE_BASE_URL + props.extraData.backdrop_path
+                            process.env.REACT_APP_IMAGE_BASE_URL_W780+ props.extraData.backdrop_path
                         }
                     />
 
@@ -37,7 +37,7 @@ const CarosalMain = (props) => {
                     <img
                         alt="main"
                         className={styles.myImage}
-                        src={process.env.REACT_APP_IMAGE_BASE_URL + props.data.backdrop_path}
+                        src={process.env.REACT_APP_IMAGE_BASE_URL_W780+ props.data.backdrop_path}
                     />
                 </Suspense>);
             setData(props.data)

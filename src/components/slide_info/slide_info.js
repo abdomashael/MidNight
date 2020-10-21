@@ -45,7 +45,7 @@ const SlideInfo = (props) => {
                     alt="thum"
                     src={
                         movie.data
-                            ? process.env.REACT_APP_IMAGE_BASE_URL + movie.data.poster_path
+                            ? process.env.REACT_APP_IMAGE_BASE_URL_W300+ movie.data.poster_path
                             : ""
                     }
                 />
