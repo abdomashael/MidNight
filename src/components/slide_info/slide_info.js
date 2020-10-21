@@ -75,7 +75,7 @@ const SlideInfo = (props) => {
                 </p>
             </div>
 
-            {genres.length>0 ? (
+            {genres.length > 0 ? (
                 <span className={styles.subInfo}>
                     <span className={styles.part}/>
                     <span className={styles.green}>{genres}</span>
@@ -85,8 +85,8 @@ const SlideInfo = (props) => {
             )}
 
             {
-                subInfos.map(info =>
-                    <div>
+                subInfos.map((info,id) =>
+                    <div key={id}>
                     <span className={styles.subInfo}>
                         <span className={styles.part}/>
                         <span className={styles.green}>{info.key}</span>
