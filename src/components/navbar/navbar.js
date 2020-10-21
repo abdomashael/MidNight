@@ -68,20 +68,22 @@ const CustomNavbar = () => {
                     {/* <Nav.Link href="#link3">مباشر</Nav.Link> */}
                 </Nav>
 
-                <Nav.Link className="pb-0" href="#link2">
-                    <FontAwesomeIcon icon={faSearch} inverse/>
-                </Nav.Link>
-                <Link className="nav-link" to="/auth?type=login">
-                    Login
-                </Link>
+                {/*hide on production*/}
 
-                <Link
-                    to="/auth/type=signup"
-                    id="btn"
-                    className={cx(cssClasses.button, "nav-link")}
-                >
-                    Sign up
-                </Link>
+                {/*<Nav.Link className="pb-0" href="#link2">*/}
+                {/*    <FontAwesomeIcon icon={faSearch} inverse/>*/}
+                {/*</Nav.Link>*/}
+                {/*<Link className="nav-link" to="/auth?type=login">*/}
+                {/*    Login*/}
+                {/*</Link>*/}
+
+                {/*<Link*/}
+                {/*    to="/auth/type=signup"*/}
+                {/*    id="btn"*/}
+                {/*    className={cx(cssClasses.button, "nav-link")}*/}
+                {/*>*/}
+                {/*    Sign up*/}
+                {/*</Link>*/}
             </Navbar.Collapse>
             {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
         </Navbar>
